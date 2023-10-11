@@ -4,21 +4,54 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    [SerializeField]
+    int maxHealth = 100;
+
+    [SerializeField]
+    int currentHealth;
+
+    Traps traps;
+    SceneManagerController sceneManagerController;
+
+    bool _canTakeDamage = true;
 
     private void Start()
     {
+        traps = GetComponent<Traps>();
         currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+        if (_canTakeDamage)
         {
-            Debug.Log("Mori");
+
+            currentHealth -= damage;
+
+            if (currentHealth <= 0)
+            {
+                sceneManagerController.RestartLevel();
+            }
         }
     }
+
+    public void DisableDamage()
+    {
+        _canTakeDamage = false;
+    }
+
+    public void EnableDamage()
+    {
+        _canTakeDamage = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            traps.TakeDamage(10); 
+        }
+    }
+
 }
 

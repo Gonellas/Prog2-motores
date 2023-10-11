@@ -1,42 +1,63 @@
 using System.Collections;
 using UnityEngine;
 
-public class Wall : MonoBehaviour
+public class Wall : Traps
 {
-    public Transform objetoAMover;
-    public float distanciaMaximaZ = 5.0f;
-    public float distanciaMinimaZ = 0.0f;
-    public float velocidad = 1.0f;
+    public Transform wall;
 
-    private Vector3 posicionInicial;
-    private bool seMovio = false;
+    [SerializeField]
+    float _maxDisZ = 5.0f;
+
+    [SerializeField]
+    float _minDisZ = 0.0f;
+
+    [SerializeField]
+    [Range(0, 10)]
+    float _wallSpeed = 1.0f;
+
+    PlayerHealth playerHealth;
+
+
+    Vector3 _initialPos;
+
+    bool _isMoved = false;
 
     private void Start()
-    {
-        if (objetoAMover == null)
+    { 
+        playerHealth = GetComponent<PlayerHealth>();
+
+        if (wall == null)
         {
-            Debug.LogError("Por favor, asigna el objeto a mover en el Inspector.");
             enabled = false;
             return;
         }
 
-        posicionInicial = objetoAMover.position;
-        StartCoroutine(MoverObjeto());
+        _initialPos = wall.position;
+        StartCoroutine(MoveWall());
     }
 
-    private IEnumerator MoverObjeto()
+    private IEnumerator MoveWall()
     {
-        while (!seMovio)
+        while (!_isMoved)
         {
-            float tiempo = Mathf.PingPong(Time.time * velocidad, 1);
-            objetoAMover.position = Vector3.Lerp(posicionInicial + Vector3.forward * distanciaMinimaZ, posicionInicial + Vector3.forward * distanciaMaximaZ, tiempo);
+            float time = Mathf.PingPong(Time.time * _wallSpeed, 1);
+            wall.position = Vector3.Lerp(_initialPos + Vector3.forward * _minDisZ, _initialPos + Vector3.forward * _maxDisZ, time);
 
-            if (tiempo >= 0.99f) // Cambiamos la condición de salida para ser menos restrictiva.
+            //Cuando llega a la _maxDisZ paran de moverse
+            if (time >= 0.99f) 
             {
-                seMovio = true;
+                _isMoved = true;
             }
 
             yield return null;
+        }
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(100);
         }
     }
 }

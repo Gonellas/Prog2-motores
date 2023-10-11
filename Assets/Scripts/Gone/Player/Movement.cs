@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement
 {
+    [SerializeField]
+    float _speed = 5;
     //float _speed;
     //Transform _transform;
 
@@ -25,4 +27,9 @@ public class Movement
     //{
     //    Debug.Log("SALTE");
     //}
+
+    public void ApplySpeedBoost(float boost)
+    {
+        _speed += boost;
+    }
 }
