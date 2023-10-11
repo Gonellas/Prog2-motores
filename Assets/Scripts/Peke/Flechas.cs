@@ -9,10 +9,6 @@ public class Flechas : MonoBehaviour
 
     public ActivarFlechas activarFlechas;
 
-    private void Awake()
-    {
-        
-    }
     private void Start()
     {
         

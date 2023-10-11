@@ -18,7 +18,9 @@ public class ActivarFlechas : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        Debug.Log("Se activa");
+
+        if (other.CompareTag("Player"))
         {
             palito = true;
         }
