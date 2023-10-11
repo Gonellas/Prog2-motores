@@ -12,6 +12,7 @@ public class ArrowSpawner : MonoBehaviour
 
     private void Start()
     {
+        
         tiempoUltimoSpawn = Time.time;
     }
 

@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
     Transform _camTransform;
 
-    bool _wantsToJump;
-
     private void Awake()
     {
         _camTransform = GetComponentInChildren<Camera>().transform;
@@ -34,6 +32,8 @@ public class Player : MonoBehaviour
     {
         //_movement = new Movement(transform, speed);
         //_controller = new Controller(_movement);
+
+        //Obtengo distancia hasta el piso
     }
 
     void Update()
@@ -47,30 +47,31 @@ public class Player : MonoBehaviour
         _camForward2D.y = 0;
         _camForward2D =_camForward2D.normalized;
 
+
         Vector3 forwardDir = _camForward2D * aXVertical;
         Vector3 horizontalDir = _camTransform.right * aXHorizontal;
 
         _dir = forwardDir + horizontalDir;
         _dir = _dir.normalized;
 
-        if(!_wantsToJump) _wantsToJump = (Input.GetButtonDown("Jump"));
+        
+        Jump();
+           
+   
     }
 
     private void FixedUpdate()
     {
-        if (_wantsToJump)
-        {
-            Jump();
-            _wantsToJump = false;
-        }
-
         PlayerMove();
         PlayerRotation();        
     }
 
     void Jump()
     {
-        _rb.AddForce(transform.up * _jumpForce , ForceMode.Impulse);
+        if (Input.GetButtonDown("Jump"))
+        {
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        }
     }
 
     void PlayerMove()
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         _dir.y = 0;
         _dir = _dir.normalized;
 
-        Vector3 newRotation = Vector3.Lerp(transform.forward, _dir, _rotSpeed * Time.fixedDeltaTime);
+        Vector3 newRotation = Vector3.Lerp(transform.forward, _dir, _rotSpeed * Time.deltaTime);
 
         transform.forward = newRotation;
     }
