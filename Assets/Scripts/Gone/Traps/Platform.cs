@@ -5,40 +5,61 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private bool isPlayerOnPlatform = false;
-    public float fallSpeed = 1.0f;
-    public float fallDistance = 3.0f;
-    private Vector3 initialPosition;
     private bool isFalling = false;
+    private float fallTimer = 3.0f; 
+    public GameObject objectToDeactivate;
+    SceneManagerController sceneManagerController;
 
     private void Start()
     {
-        initialPosition = transform.position;
+        sceneManagerController = FindObjectOfType<SceneManagerController>();
     }
 
     private void Update()
     {
-        if (isFalling)
+        if (isPlayerOnPlatform && !isFalling)
         {
-            Vector3 newPosition = transform.position;
-            newPosition.y -= fallSpeed * Time.deltaTime;
-            transform.position = newPosition;
-
-            // Verifica si la plataforma ha caído lo suficiente
-            if (transform.position.y < initialPosition.y - fallDistance)
+            fallTimer -= Time.deltaTime;
+            if (fallTimer <= 0)
             {
-                // La plataforma ha caído lo suficiente, puedes realizar una acción, como desactivarla o destruirla.
-                // Ejemplo:
-                gameObject.SetActive(false);
+                Fall();
+                Debug.Log("Cayendo");
             }
+        } 
+
+
+    }
+
+    private void Fall()
+    {
+        isFalling = true;
+
+        if (objectToDeactivate != null)
+        {
+            objectToDeactivate.SetActive(false);
+        }
+
+        gameObject.SetActive(false);
+
+        if (isPlayerOnPlatform && isFalling)
+        {
+            Debug.Log("Mori");
+            Invoke("RestartLevel", 3.0f);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
-            isPlayerOnPlatform = true;
-            isFalling = true;
-        }
+            Debug.Log("Colision");
+            isPlayerOnPlatform = true;            
+          
+        }       
+    }
+
+    private void RestartLevel()
+    {
+        sceneManagerController.RestartLevel();
     }
 }

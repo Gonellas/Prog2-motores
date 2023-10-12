@@ -22,8 +22,11 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
     Transform _camTransform;
 
+    PlayerHealth playerHealth;
+
     private void Awake()
     {
+        playerHealth = FindObjectOfType<PlayerHealth>();
         _camTransform = GetComponentInChildren<Camera>().transform;
         _rb = GetComponent<Rigidbody>();
     }
@@ -87,5 +90,15 @@ public class Player : MonoBehaviour
         Vector3 newRotation = Vector3.Lerp(transform.forward, _dir, _rotSpeed * Time.deltaTime);
 
         transform.forward = newRotation;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Arrow"))
+        {
+            Destroy(collision.gameObject);
+
+            playerHealth.TakeDamage(10);
+        }
     }
 }

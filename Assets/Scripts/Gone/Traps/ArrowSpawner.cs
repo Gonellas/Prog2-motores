@@ -6,7 +6,7 @@ public class ArrowSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject arrowPrefab;
-    public float tiempoEntreSpawns = 2.0f; // Intervalo de tiempo entre spawneo
+    public float tiempoEntreSpawns = 2.0f; 
 
     private float tiempoUltimoSpawn;
 
@@ -18,7 +18,6 @@ public class ArrowSpawner : MonoBehaviour
 
     private void Update()
     {
-        // Verifica si es tiempo de spawnear una flecha
         if (Time.time - tiempoUltimoSpawn >= tiempoEntreSpawns)
         {
             SpawnArrow();
@@ -28,10 +27,8 @@ public class ArrowSpawner : MonoBehaviour
 
     private void SpawnArrow()
     {
-        // Instancia el prefab
         GameObject instanciaPrefab = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
 
-        // Ajusta la rotaci�n en el eje Y a 90 grados
         instanciaPrefab.transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 }

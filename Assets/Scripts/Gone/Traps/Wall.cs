@@ -1,11 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Wall : Traps
+public class Wall : MonoBehaviour
 {
     public Transform wall;
 
-    [SerializeField]
+    SceneManagerController sceneManagerController;
+
+   [SerializeField]
     float _maxDisZ = 5.0f;
 
     [SerializeField]
@@ -17,13 +20,16 @@ public class Wall : Traps
 
     PlayerHealth playerHealth;
 
+    [SerializeField]
+    private List<Wall> collidingWalls = new List<Wall>();
 
     Vector3 _initialPos;
 
     bool _isMoved = false;
 
     private void Start()
-    { 
+    {
+        sceneManagerController = FindObjectOfType<SceneManagerController>();
         playerHealth = GetComponent<PlayerHealth>();
 
         if (wall == null)
@@ -53,11 +59,26 @@ public class Wall : Traps
         }
     }
 
-    public override void TakeDamage(int damage)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (playerHealth != null)
+        if (collision.transform.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(100);
+            collidingWalls.Add(this);
+            CheckPlayerDeath();
+        }       
+    }
+
+    private void CheckPlayerDeath()
+    {
+        if (collidingWalls.Count == 2)
+        {
+            Invoke("RestartLevel", 3.0f);
         }
     }
+
+    private void RestartLevel()
+    {
+        sceneManagerController.RestartLevel();
+    }
+
 }

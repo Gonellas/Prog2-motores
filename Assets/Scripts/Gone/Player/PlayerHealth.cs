@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField]
+    Slider healthBar;
+
     [SerializeField]
     int maxHealth = 100;
 
     [SerializeField]
     int currentHealth;
 
-    Traps traps;
     SceneManagerController sceneManagerController;
 
     bool _canTakeDamage = true;
 
     private void Start()
     {
-        traps = GetComponent<Traps>();
+        sceneManagerController = FindObjectOfType<SceneManagerController>();
         currentHealth = maxHealth;
     }
 
@@ -25,14 +28,23 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_canTakeDamage)
         {
-
             currentHealth -= damage;
-
+            UpdateHealthBar();  
             if (currentHealth <= 0)
             {
                 sceneManagerController.RestartLevel();
             }
         }
+
+        Debug.Log("Daño recibido");
+    }
+
+    private void UpdateHealthBar()
+    {
+        currentHealth = Mathf.Max(0, currentHealth);
+
+
+        healthBar.value = (float)currentHealth / maxHealth;
     }
 
     public void DisableDamage()
@@ -49,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            traps.TakeDamage(10); 
+            TakeDamage(10); 
         }
     }
 

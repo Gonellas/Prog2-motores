@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7280311887429718752}
   m_Layer: 0
   m_Name: ArrowRight
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arrowSpeedZ: 2
   _tag: WallLeft
+  playerHealth: {fileID: 0}
   _moveRight: 1
 --- !u!54 &-7280311887429718752
 Rigidbody:

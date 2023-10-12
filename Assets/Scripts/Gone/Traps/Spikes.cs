@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spikes : Traps
+public class Spikes : MonoBehaviour
 {
     public Transform spikes; 
     
@@ -23,7 +23,7 @@ public class Spikes : Traps
 
     private void Start()
     {
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
 
         if (spikes == null)
         {
@@ -63,12 +63,11 @@ public class Spikes : Traps
         }
     }
 
-    public override void TakeDamage(int damage)
+    private void OnTriggerEnter(Collider other)
     {
-        if (playerHealth != null)
+        if (other.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(10);
+            playerHealth.TakeDamage(10); 
         }
-
     }
 }

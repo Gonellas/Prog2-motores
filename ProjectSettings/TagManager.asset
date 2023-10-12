@@ -8,6 +8,7 @@ TagManager:
   - WallRight
   - WallLeft
   - TrapCollider
+  - Arrow
   layers:
   - Default
   - TransparentFX
