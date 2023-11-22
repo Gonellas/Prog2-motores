@@ -12,7 +12,7 @@ public class Platform : MonoBehaviour
 
     private void Start()
     {
-        sceneManagerController = FindObjectOfType<SceneManagerController>();
+        sceneManagerController = GetComponent<SceneManagerController>();
     }
 
     private void Update()

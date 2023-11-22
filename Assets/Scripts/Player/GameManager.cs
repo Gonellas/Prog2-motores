@@ -5,8 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] private CursorLockMode _lockMode;
+    [SerializeField] private bool _isCursorVisible;
+
 
     private bool isPaused = false;
+
+    private void Start()
+    {
+        _lockMode = Cursor.lockState;
+    }
 
     private void Update()
     {
@@ -28,11 +36,17 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
+            _lockMode = Cursor.lockState;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = _isCursorVisible;
+
         }
         else
         {
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
+            Cursor.lockState = _lockMode;
+            Cursor.visible = false;
         }
     }
 

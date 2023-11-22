@@ -23,7 +23,7 @@ public class Spikes : MonoBehaviour
 
     private void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
+        playerHealth = GetComponent<PlayerHealth>();
 
         if (spikes == null)
         {

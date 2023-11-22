@@ -29,7 +29,7 @@ public class Wall : MonoBehaviour
 
     private void Start()
     {
-        sceneManagerController = FindObjectOfType<SceneManagerController>();
+        sceneManagerController = GetComponent<SceneManagerController>();
         playerHealth = GetComponent<PlayerHealth>();
 
         if (wall == null)

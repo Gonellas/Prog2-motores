@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
+        playerHealth = GetComponent<PlayerHealth>();
         _camTransform = GetComponentInChildren<Camera>().transform;
         _rb = GetComponent<Rigidbody>();
     }
