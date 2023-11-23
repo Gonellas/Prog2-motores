@@ -12,9 +12,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] private float _movSpeed = 5f;
-    [SerializeField] private float _fallVelocity;
-    [SerializeField] private float _gravity;
-    [SerializeField] private float _jumpForce = 8f;
+    [SerializeField] private float _gravity = 9.8f;
+    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private float _groundDistance = 0.2f;
+    [SerializeField] private LayerMask _groundMask;
+
+    private bool _isGrounded;
+
+
 
     private Rigidbody _rb;    
     private PlayerController _controller;
@@ -35,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _controller.ListenFixedKeys();
+        ApplyGravity();
     }
 
     public void Movement(Vector3 dir)
@@ -58,15 +64,25 @@ public class PlayerMovement : MonoBehaviour
         _view.SetMovement(dir.x, dir.z);
     }
 
-    //public void Jump()
-    //{
-    //    if (player.isGrounded && Input.GetButtonDown("Jump"))
-    //    {
-    //        _fallVelocity = _jumpForce;
-    //        movePlayer.y = _fallVelocity;
+    public void Jump()
+    {
+        _isGrounded = Physics.CheckSphere(transform.position, _groundDistance, _groundMask);
 
-    //    }
-    //}
+        if (_isGrounded)
+        {
+        Debug.Log("Saltando");
+            _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z); // Resetear la velocidad en y para evitar el doble salto
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    public void ApplyGravity()
+    {
+        if (!_isGrounded)
+        {
+            _rb.AddForce(Vector3.down * _gravity, ForceMode.Acceleration);
+        }
+    }
     private void Rotate(Vector3 dir)
     {
         transform.forward = dir;
