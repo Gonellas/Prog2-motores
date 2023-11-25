@@ -4,13 +4,10 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField]
-    float _arrowSpeedZ = 2.0f; 
+    private float _arrowSpeedZ = 2.0f; 
 
     [SerializeField]
-    string _tag;
-
-    [SerializeField]
-    private PlayerHealth playerHealth; 
+    private string _tag;
 
     public bool _moveRight = true; 
 
@@ -27,5 +24,14 @@ public class Arrow : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<PlayerHealth>();
+
+        if (player != null) player.TakeDamage(10);
+
+        Destroy(gameObject);
     }
 }

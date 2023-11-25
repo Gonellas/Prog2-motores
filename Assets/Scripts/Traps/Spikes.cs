@@ -67,7 +67,7 @@ public class Spikes : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(10); 
+            //playerHealth.TakeDamage(10); 
         }
     }
 }

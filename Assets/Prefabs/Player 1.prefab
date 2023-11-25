@@ -42,11 +42,8 @@ GameObject:
   - component: {fileID: 3857829190680028525}
   - component: {fileID: 4095483224345222494}
   - component: {fileID: 6298291418919483869}
-  - component: {fileID: 9035549022327908485}
-  - component: {fileID: 2987005539530276391}
-  - component: {fileID: 3640315593424631552}
+  - component: {fileID: 5641351292055916089}
   - component: {fileID: 3549645822387305544}
-  - component: {fileID: 3155438724369317025}
   - component: {fileID: 3155438724369317034}
   m_Layer: 0
   m_Name: Player 1
@@ -94,7 +91,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8589058858908221983}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -102,7 +99,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &9035549022327908485
+--- !u!114 &5641351292055916089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,35 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c328f9c8a794348a4e314f71d25f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 10
-  _rotSpeed: 10
-  _jumpForce: 5000
---- !u!114 &2987005539530276391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8589058858908221983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c81965f0b5188a4c9cab3918a981bb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3640315593424631552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8589058858908221983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4b1861d0a93724783a424216dc5e92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camTransform: {fileID: 0}
-  _movSpeed: 5
+  _speed: 0
+  _gravity: 0
+  _jumpForce: 0
+  _groundDistance: 0
+  _isGrounded: 0
 --- !u!114 &3549645822387305544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,18 +131,6 @@ MonoBehaviour:
   _playerAnim: {fileID: 3513414074262956756}
   _xAxisName: xAxis
   _zAxisName: zAxis
---- !u!114 &3155438724369317025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8589058858908221983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eac30c27a2f9ba43a5cdc6bf549d38f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3155438724369317034
 MonoBehaviour:
   m_ObjectHideFlags: 0

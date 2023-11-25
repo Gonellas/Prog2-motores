@@ -6,99 +6,45 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+    [Header("Values")]
+    [SerializeField] float _speed;
+    [SerializeField] float _gravity;
+    [SerializeField] float _jumpForce;
+    [SerializeField] float _groundDistance;
+    [SerializeField] bool _isGrounded;
 
-    //Controller _controller;
-    //Movement _movement;
-    [SerializeField]
-    float _playerSpeed = 2;
-
-    [SerializeField]
-    float _rotSpeed = 2;
-
-    [SerializeField]
-    float _jumpForce = 2;
-
-    Vector3 _dir; 
     Rigidbody _rb;
-    Transform _camTransform;
-
-    PlayerHealth playerHealth;
-
-    private void Awake()
-    {
-        playerHealth = GetComponent<PlayerHealth>();
-        _camTransform = GetComponentInChildren<Camera>().transform;
-        _rb = GetComponent<Rigidbody>();
-    }
+    Vector3 _newDir;
+    Vector3 _dir;
+    PlayerController _controller;
+    PlayerMovement _movement;
+    PlayerView _view;
+    public Transform _camTransform;
+    public LayerMask groundMask;
 
     private void Start()
     {
-        //_movement = new Movement(transform, speed);
-        //_controller = new Controller(_movement);
-
-        //Obtengo distancia hasta el piso
+       
     }
 
-    void Update()
+    private void Awake()
     {
-        //_controller.ArtificialUpdate();
+        _rb = GetComponent<Rigidbody>();
 
-        float aXHorizontal = Input.GetAxisRaw("Horizontal");
-        float aXVertical = Input.GetAxisRaw("Vertical");
+        _movement = new PlayerMovement(transform, _camTransform, groundMask, _rb, _newDir, _view, _speed, _gravity, _jumpForce, _groundDistance, _isGrounded);
+        _controller = new PlayerController(_movement, _dir);
 
-        Vector3 _camForward2D = _camTransform.forward;
-        _camForward2D.y = 0;
-        _camForward2D =_camForward2D.normalized;
-
-
-        Vector3 forwardDir = _camForward2D * aXVertical;
-        Vector3 horizontalDir = _camTransform.right * aXHorizontal;
-
-        _dir = forwardDir + horizontalDir;
-        _dir = _dir.normalized;
-
-        
-        Jump();
-           
-   
+        _movement.ArtificialAwake();
     }
-
     private void FixedUpdate()
     {
-        PlayerMove();
-        PlayerRotation();        
+        _controller.ListenFixedKeys();
+        _movement.ArtificialFixedUpdate();
     }
 
-    void Jump()
+    private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-        }
+        _controller.ArtificialUpdate();        
     }
 
-    void PlayerMove()
-    {
-        _rb.velocity = _dir * _playerSpeed;
-    }
-
-    void PlayerRotation()
-    {
-        _dir.y = 0;
-        _dir = _dir.normalized;
-
-        Vector3 newRotation = Vector3.Lerp(transform.forward, _dir, _rotSpeed * Time.deltaTime);
-
-        transform.forward = newRotation;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Arrow"))
-        {
-            Destroy(collision.gameObject);
-
-            playerHealth.TakeDamage(10);
-        }
-    }
 }

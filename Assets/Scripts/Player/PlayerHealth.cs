@@ -9,10 +9,10 @@ public class PlayerHealth : MonoBehaviour
     Slider healthBar;
 
     [SerializeField]
-    int maxHealth = 100;
+    float maxHealth = 100;
 
     [SerializeField]
-    int currentHealth;
+    float currentHealth;
 
     SceneManagerController sceneManagerController;
 
@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (_canTakeDamage)
         {
@@ -39,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Daño recibido");
     }
 
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         currentHealth = Mathf.Max(0, currentHealth);
 
