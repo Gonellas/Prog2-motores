@@ -6,7 +6,8 @@ public class PlayerController
 {
 
     PlayerMovement _movement;
-    public Vector3 _dir;
+    PlayerView _view;
+    Vector3 _dir;
 
     public PlayerController(PlayerMovement movement, Vector3 dir)
     {
@@ -25,7 +26,7 @@ public class PlayerController
         if (Input.GetButtonDown("Jump"))
         {
             Debug.Log("salto ii");
-            _movement.Jump();
+            _movement.Jump(_dir);
         }
     }
     public void ListenFixedKeys()

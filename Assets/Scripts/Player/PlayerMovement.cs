@@ -5,21 +5,21 @@ using UnityEngine;
 public class PlayerMovement 
 {
     [Header("Components")]
-    public Transform _camTransform;
+    [SerializeField] private Transform _camTransform;
     [SerializeField] private LayerMask _groundMask;
 
     [Header("Values")]
-    public float _movSpeed = 5f;
-    public float _gravity = 9.8f;
-    public float _jumpForce = 5f;
-    public float _groundDistance = 1.3f;
-    public bool _isGrounded;
+    [SerializeField] private float _movSpeed = 5f;
+    [SerializeField] private float _gravity = 9.8f;
+    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private float _groundDistance = 1.3f;
+    [SerializeField] private bool _isGrounded;
 
-    public Rigidbody _rb;    
-    public PlayerController _controller;
-    public PlayerView _view;
-    public Vector3 _newDir;
-    public Transform _transform;
+    Rigidbody _rb;    
+    PlayerController _controller;
+    PlayerView _view;
+    Vector3 _newDir;
+    Transform _transform;
 
     public PlayerMovement(Transform transform, Transform camTransform, LayerMask groundMask, Rigidbody rb, Vector3 newDir, PlayerView view, float speed, float gravity, float jumpForce, float groundDistance, bool isGrounded)
     {
@@ -74,7 +74,7 @@ public class PlayerMovement
         _view.SetMovement(dir.x, dir.z);
     }
 
-    public void Jump()
+    public void Jump(Vector3 dir)
     {
         
         _isGrounded = Physics.CheckSphere(_transform.position, _groundDistance, _groundMask);
@@ -86,8 +86,13 @@ public class PlayerMovement
             // Resetear la velocidad en y para evitar el doble salto
             _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-
+            _view.SetJumping(true);
         }
+        //else
+        //{
+        //    _view.SetJumping(false);
+        //    _view.SetMovement(dir.x, dir.z);
+        //}
     }
 
     public void ApplyGravity()

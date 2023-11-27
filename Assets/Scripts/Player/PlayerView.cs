@@ -8,6 +8,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private Animator _playerAnim;
     [SerializeField] private string _xAxisName = "xAxis";
     [SerializeField] private string _zAxisName = "zAxis";
+    
 
     private void Start()
     {
@@ -21,5 +22,10 @@ public class PlayerView : MonoBehaviour
     {
         _playerAnim.SetFloat(_xAxisName, xAxis);
         _playerAnim.SetFloat(_zAxisName, zAxis);
+    }
+
+    public void SetJumping(bool isJumping)
+    {
+        _playerAnim.SetTrigger("wantsToJump");
     }
 }

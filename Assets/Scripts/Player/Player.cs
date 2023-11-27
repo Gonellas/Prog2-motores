@@ -19,8 +19,9 @@ public class Player : MonoBehaviour
     PlayerController _controller;
     PlayerMovement _movement;
     PlayerView _view;
-    public Transform _camTransform;
-    public LayerMask groundMask;
+
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] Transform _camTransform;
 
     private void Start()
     {
