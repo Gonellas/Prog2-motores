@@ -11,7 +11,7 @@ public class Arrow : Traps
     {
         float direccionZ = _moveRight ? 1.0f : -1.0f;
 
-        transform.Translate(Vector3.forward * _arrowSpeedZ * direccionZ * Time.deltaTime);
+        transform.Translate(-Vector3.down * _arrowSpeedZ * direccionZ * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)

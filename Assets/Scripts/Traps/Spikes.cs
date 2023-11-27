@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spikes : Traps
 {
-    public Transform spikes; 
+    Transform spikes; 
     
     [SerializeField] float _maxHeight = 3.38f; 
     [SerializeField] float _minHeight = -3.38f; 
@@ -17,6 +17,7 @@ public class Spikes : Traps
     {
         base.Start();
 
+        spikes = gameObject.transform;
         if (spikes == null)
         {
             enabled = false;
