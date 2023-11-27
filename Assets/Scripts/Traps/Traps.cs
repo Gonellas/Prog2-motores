@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Traps: MonoBehaviour, IDamageable
 {
-    [SerializeField] bool _canTakeDamage = true;
+     bool _canTakeDamage = true;
     [SerializeField] GameObject trap;
 
     public SceneManagerController sceneManagerController;
@@ -35,5 +35,22 @@ public abstract class Traps: MonoBehaviour, IDamageable
     public virtual void Activator()
     {
         trap.SetActive(true);
+    }
+
+    protected void CheckPlayerHeight(Transform player, float deathYPosition)
+    {
+        float playerYPosition = player.position.y;
+
+        if (player.position.y <= deathYPosition)
+        {
+            StartCoroutine(DeathTimer());
+        }
+    }
+
+    IEnumerator DeathTimer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        TakeDamage(100);
+        Die();
     }
 }

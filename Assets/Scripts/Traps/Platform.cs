@@ -2,64 +2,90 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class Platform : Traps
 {
-    private bool isPlayerOnPlatform = false;
-    private bool isFalling = false;
-    private float fallTimer = 3.0f; 
-    public GameObject objectToDeactivate;
-    SceneManagerController sceneManagerController;
+    [SerializeField] private bool _isPlayerOnPlatform = false;
+    [SerializeField] private bool _gravityActivated = false;
+    [SerializeField] private float _fallTimer = 3.0f;
+    [SerializeField] private float _shakeIntensity = 0.1f;
+    [SerializeField] private float _shakeDuration = 2.0f;
+    [SerializeField] float _deathYPosition;
+    [SerializeField] Transform _player;
 
-    private void Start()
+    Vector3 _originalPosition;
+    Rigidbody _rb;
+
+    new private void Start()
     {
-        sceneManagerController = GetComponent<SceneManagerController>();
+        base.Start();
+
+        _rb = GetComponent<Rigidbody>();
+
+        _originalPosition = transform.position;
     }
 
     private void Update()
     {
-        if (isPlayerOnPlatform && !isFalling)
+        CheckPlayerHeight(_player, _deathYPosition);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && !_gravityActivated)
         {
-            fallTimer -= Time.deltaTime;
-            if (fallTimer <= 0)
+            _isPlayerOnPlatform = true;
+            _gravityActivated = true;
+
+            if (_gravityActivated)
             {
-                Fall();
-                Debug.Log("Cayendo");
+                StartCoroutine(StartShakeAfterDelay());
+                StartCoroutine(PlatformFall());
             }
-        } 
-
-
-    }
-
-    private void Fall()
-    {
-        isFalling = true;
-
-        if (objectToDeactivate != null)
-        {
-            objectToDeactivate.SetActive(false);
-        }
-
-        gameObject.SetActive(false);
-
-        if (isPlayerOnPlatform && isFalling)
-        {
-            Debug.Log("Mori");
-            Invoke("RestartLevel", 3.0f);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Colision");
-            isPlayerOnPlatform = true;            
-          
-        }       
+            _isPlayerOnPlatform = false;
+        }
     }
 
-    private void RestartLevel()
+    private IEnumerator PlatformFall()
     {
-        sceneManagerController.RestartLevel();
+        yield return new WaitForSeconds(_fallTimer);
+
+        _rb.isKinematic = false;
+        _gravityActivated = true;
+
+        yield return new WaitForSeconds(_shakeDuration + 1f);
+
+        Destroy(gameObject);       
+    }
+
+    private IEnumerator StartShakeAfterDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ShakePlatform());
+    }
+
+    private IEnumerator ShakePlatform()
+    {
+        float shakeTimer = 0f;
+
+        while (shakeTimer < _shakeDuration)
+        {
+            Vector3 randomPos = _originalPosition + Random.insideUnitSphere * _shakeIntensity;
+            randomPos.y = _originalPosition.y;
+            transform.position = randomPos;
+
+            shakeTimer += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.position = _originalPosition;
     }
 }
