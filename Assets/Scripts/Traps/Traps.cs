@@ -37,8 +37,9 @@ public abstract class Traps: MonoBehaviour, IDamageable
         trap.SetActive(true);
     }
 
-    protected void CheckPlayerHeight(Transform player, float deathYPosition)
+    public virtual void CheckPlayerHeight(Transform player, float deathYPosition)
     {
+        Debug.Log("me mue");
         float playerYPosition = player.position.y;
 
         if (player.position.y <= deathYPosition)

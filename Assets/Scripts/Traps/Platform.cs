@@ -26,7 +26,7 @@ public class Platform : Traps
 
     private void Update()
     {
-        CheckPlayerHeight(_player, _deathYPosition);
+        CheckPlayerHeight(_player, -_deathYPosition);
     }
 
 
