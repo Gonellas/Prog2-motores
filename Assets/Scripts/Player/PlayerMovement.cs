@@ -88,11 +88,6 @@ public class PlayerMovement
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             _view.SetJumping(true);
         }
-        //else
-        //{
-        //    _view.SetJumping(false);
-        //    _view.SetMovement(dir.x, dir.z);
-        //}
     }
 
     public void ApplyGravity()

@@ -1,15 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Arrow : MonoBehaviour
+public class Arrow : Traps
 {
-    [SerializeField]
-    private float _arrowSpeedZ = 2.0f; 
-
-    [SerializeField]
-    private string _tag;
-
-    public bool _moveRight = true; 
+    [SerializeField] private float _arrowSpeedZ = 2.0f; 
+    [SerializeField] private string _tag;
+    [SerializeField] private bool _moveRight = true;
 
     private void Update()
     {
@@ -24,14 +20,19 @@ public class Arrow : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.transform.CompareTag("Player"))
+        {
+            base.TakeDamage(10);
+            Destroy(gameObject);
+
+            Debug.Log("Vida restante" + " " + playerHealth.currentHealth);
+
+            if (playerHealth.currentHealth <= 0)
+            {
+                base.Die();
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var player = other.GetComponent<PlayerHealth>();
-
-        if (player != null) player.TakeDamage(10);
-
-        Destroy(gameObject);
-    }
 }

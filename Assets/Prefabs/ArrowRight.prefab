@@ -357,13 +357,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440723d260fafea41b774a10dabe565b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  maxHealth: 100
-  currentHealth: 0
   _canTakeDamage: 1
-  _currentHealth: 0
-  _arrowSpeedZ: 2
-  player: {fileID: 919132149155446097, guid: 730d8cc4816b2d44c87123b87427ca45, type: 3}
+  trap: {fileID: 0}
+  sceneManagerController: {fileID: 0}
+  playerHealth: {fileID: 0}
+  _arrowSpeedZ: 15
   _tag: WallLeft
   _moveRight: 1
 --- !u!54 &-7280311887429718752

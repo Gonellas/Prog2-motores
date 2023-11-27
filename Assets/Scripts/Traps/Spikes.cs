@@ -2,28 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spikes : MonoBehaviour
+public class Spikes : Traps
 {
     public Transform spikes; 
     
-    [SerializeField]
-    float _maxHeight = 3.38f; 
-
-    [SerializeField]
-    float _minHeight = -3.38f; 
-
-    [SerializeField]
-    float _velocity = 1.0f; 
-
-    [SerializeField]
-    float _cooldown = 2.0f;
+    [SerializeField] float _maxHeight = 3.38f; 
+    [SerializeField] float _minHeight = -3.38f; 
+    [SerializeField] float _velocity = 1.0f; 
+    [SerializeField] float _cooldown = 2.0f;
 
     Vector3 initialPos;
-    PlayerHealth playerHealth;
 
-    private void Start()
+    new private void Start()
     {
-        playerHealth = GetComponent<PlayerHealth>();
+        base.Start();
 
         if (spikes == null)
         {
@@ -62,12 +54,18 @@ public class Spikes : MonoBehaviour
             yield return new WaitForSeconds(_cooldown);
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //playerHealth.TakeDamage(10); 
+            TakeDamage(20);
+
+            Debug.Log("Vida restante" + " " + playerHealth.currentHealth);
+
+            if (playerHealth.currentHealth <= 0)
+            {
+                base.Die();
+            }
         }
     }
 }

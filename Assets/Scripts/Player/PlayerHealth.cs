@@ -5,38 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField]
-    Slider healthBar;
+    [SerializeField] Slider healthBar;
 
-    [SerializeField]
-    float maxHealth = 100;
-
-    [SerializeField]
-    float currentHealth;
-
-    SceneManagerController sceneManagerController;
+    [SerializeField] float maxHealth = 100;
+ 
+    public float currentHealth;
 
     bool _canTakeDamage = true;
 
     private void Start()
     {
-        sceneManagerController = FindObjectOfType<SceneManagerController>();
         currentHealth = maxHealth;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        if (_canTakeDamage)
-        {
-            currentHealth -= damage;
-            UpdateHealthBar();  
-            if (currentHealth <= 0)
-            {
-                sceneManagerController.RestartLevel();
-            }
-        }
-
-        Debug.Log("Daño recibido");
     }
 
     public void UpdateHealthBar()
@@ -56,14 +35,5 @@ public class PlayerHealth : MonoBehaviour
     {
         _canTakeDamage = true;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            TakeDamage(10); 
-        }
-    }
-
 }
 
