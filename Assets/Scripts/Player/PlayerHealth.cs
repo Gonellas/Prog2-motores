@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
  
     public float currentHealth;
 
-    bool _canTakeDamage = true;
+    public bool canTakeDamage = true;
 
     private void Start()
     {
@@ -28,12 +28,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void DisableDamage()
     {
-        _canTakeDamage = false;
+        canTakeDamage = false;
     }
 
     public void EnableDamage()
     {
-        _canTakeDamage = true;
+        canTakeDamage = true;
     }
 }
 

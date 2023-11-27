@@ -29,6 +29,6 @@ public class ArrowSpawner : MonoBehaviour
     {
         GameObject instanciaPrefab = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
 
-        instanciaPrefab.transform.rotation = Quaternion.Euler(0, 0, 90);
+        instanciaPrefab.transform.rotation = Quaternion.Euler(0, 90, 90);
     }
 }

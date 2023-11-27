@@ -6,12 +6,24 @@ public class Arrow : Traps
     [SerializeField] private float _arrowSpeedZ = 2.0f; 
     [SerializeField] private string _tag;
     [SerializeField] private bool _moveRight = true;
+    [SerializeField] private bool _rotateOnX = false;
 
+   new private void Start()
+    {
+        base.Start();
+
+        if (_rotateOnX)
+        {
+            transform.rotation = Quaternion.Euler(180f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        }
+    }
     private void Update()
     {
         float direccionZ = _moveRight ? 1.0f : -1.0f;
 
-        transform.Translate(-Vector3.down * _arrowSpeedZ * direccionZ * Time.deltaTime);
+        
+        transform.Translate(Vector3.forward * _arrowSpeedZ * direccionZ * Time.deltaTime);
+       
     }
 
     private void OnCollisionEnter(Collision collision)
