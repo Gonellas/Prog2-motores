@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController 
 {
-
+    IInteractable _interaction;
     PlayerMovement _movement;
     PlayerView _view;
     Vector3 _dir;
@@ -14,12 +14,6 @@ public class PlayerController
         _movement = movement;
         _dir = dir;
     }
-
-    //public void ArtificialAwake()
-    //{
-        
-    //    //_dir = new Vector3();
-    //}
 
     public void ArtificialUpdate()
     {
@@ -41,11 +35,11 @@ public class PlayerController
         _movement.ApplyGravity();
     }
 
-    
-
-
-
-
-
-
+    public void Interact()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            _interaction.Interact();
+        }
+    }
 }
