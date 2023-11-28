@@ -2,35 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wall : MonoBehaviour
+public class Wall : Traps
 {
-    public Transform wall;
 
-    SceneManagerController sceneManagerController;
+    [SerializeField] float _maxDisZ = 5.0f;
+    [SerializeField] float _minDisZ = 0.0f;
+    [SerializeField] float _timeBetweenMovements = 3f;
+    [SerializeField] float _timeToOpen;
+    [SerializeField] float _timeToClose;
+    [SerializeField] float _moveSpeed = 50f;
 
-   [SerializeField]
-    float _maxDisZ = 5.0f;
-
-    [SerializeField]
-    float _minDisZ = 0.0f;
-
-    [SerializeField]
-    [Range(0, 10)]
-    float _wallSpeed = 1.0f;
-
-    PlayerHealth playerHealth;
-
-    [SerializeField]
     private List<Wall> collidingWalls = new List<Wall>();
 
     Vector3 _initialPos;
 
-    bool _isMoved = false;
+    public Transform wall;
 
-    private void Start()
+    new private void Start()
     {
-        sceneManagerController = GetComponent<SceneManagerController>();
-        playerHealth = GetComponent<PlayerHealth>();
+        base.Start();
 
         if (wall == null)
         {
@@ -39,46 +29,68 @@ public class Wall : MonoBehaviour
         }
 
         _initialPos = wall.position;
-        StartCoroutine(MoveWall());
+
+        StartCoroutine(OpenCloseWall());
+        
     }
 
-    private IEnumerator MoveWall()
+    private IEnumerator MoveWall(float fromDistance, float toDistance, float moveSpeed)
     {
-        while (!_isMoved)
+        float timeElapsed = 0f;
+
+        //nivel prototipo
+        //Vector3 startPos = _initialPos + Vector3.forward * fromDistance;
+        //Vector3 endPos = _initialPos + Vector3.forward * toDistance;
+
+        Vector3 startPos = _initialPos + Vector3.right * fromDistance;
+        Vector3 endPos = _initialPos + Vector3.right * toDistance;
+
+        while(timeElapsed < moveSpeed)
         {
-            float time = Mathf.PingPong(Time.time * _wallSpeed, 1);
-            wall.position = Vector3.Lerp(_initialPos + Vector3.forward * _minDisZ, _initialPos + Vector3.forward * _maxDisZ, time);
-
-            //Cuando llega a la _maxDisZ paran de moverse
-            if (time >= 0.99f) 
-            {
-                _isMoved = true;
-            }
-
+            float t = timeElapsed / moveSpeed;
+            wall.position = Vector3.Lerp(startPos, endPos, t);
+            Debug.Log("Time Elapsed: " + timeElapsed);
+            timeElapsed += Time.deltaTime * moveSpeed;
             yield return null;
         }
+
+        wall.position = endPos;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private IEnumerator OpenCloseWall()
+    {
+        while (true)
+        {
+            yield return MoveWall(_minDisZ, _maxDisZ, _moveSpeed);
+            yield return new WaitForSeconds(_timeToOpen);
+            yield return MoveWall(_maxDisZ, _minDisZ, _moveSpeed);
+            yield return new WaitForSeconds(_timeToClose);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
             collidingWalls.Add(this);
             CheckPlayerDeath();
-        }       
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            collidingWalls.Remove(this);
+        }
     }
 
     private void CheckPlayerDeath()
     {
-        if (collidingWalls.Count == 2)
+        if (collidingWalls.Count >= 2)
         {
-            Invoke("RestartLevel", 3.0f);
+            base.TakeDamage(100);
+            base.Die();
         }
-    }
-
-    private void RestartLevel()
-    {
-        sceneManagerController.RestartLevel();
     }
 
 }
