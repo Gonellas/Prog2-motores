@@ -6,7 +6,6 @@ using UnityEngine;
 public class InventoryItemData : ScriptableObject
 {
     public string key;
-    public string value;
     public string displayName;
     public Sprite icon;
     public GameObject prefab;

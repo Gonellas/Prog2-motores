@@ -28,6 +28,7 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+
     public InventoryItem Get(InventoryItemData referenceData)
     {
         if(_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
@@ -46,7 +47,7 @@ public class InventorySystem : MonoBehaviour
         if (_itemDictionary.TryGetValue(item, out InventoryItem value))
         {
             Debug.Log("se agrego el item");
-                value.AddToStack();
+            value.AddToStack();
         }
         else
         {
@@ -56,6 +57,8 @@ public class InventorySystem : MonoBehaviour
             _itemDictionary.Add(item, newItem);
         }
 
+        int numberOfItems = _itemDictionary.Count;
+        Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
         onInventoryChangedEvent?.Invoke();
     }
 
@@ -72,14 +75,9 @@ public class InventorySystem : MonoBehaviour
             }
         }
 
+        int numberOfItems = _itemDictionary.Count;
+        Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
         onInventoryChangedEvent?.Invoke();
     }
 
-    //public void DebugPrintDictionary()
-    //{
-    //    foreach (var item in _itemDictionary)
-    //    {
-    //        Debug.Log("Key: " + item.Key + " - Value: " + item.Value);
-    //    }
-    //}
 }

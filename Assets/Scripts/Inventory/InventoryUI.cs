@@ -8,23 +8,19 @@ public class InventoryUI : MonoBehaviour
     {
         InventorySystem.current.onInventoryChangedEvent += OnUpdateInventory;
     }
-    //public void Update()
-    //{
-    //    InventorySystem.current.onInventoryChangedEvent += OnUpdateInventory;
-    //}
 
     private void OnUpdateInventory()
     {
-        //foreach(Transform t in transform)
-        //{
-        //    Destroy(t.gameObject);
-        //}
-
         DrawInventory();
     }
 
     public void DrawInventory()
     {
+        foreach(Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach(InventoryItem item in InventorySystem.current.inventory)
         {
             AddInventorySlot(item);
