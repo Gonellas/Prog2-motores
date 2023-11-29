@@ -21,7 +21,7 @@ public class Interact : MonoBehaviour, IInteractable
         _leverAnim.SetBool("Open", true);
         _wallPrefab.GetComponent<Animator>().SetBool("Open", true);
 
-        //StartCoroutine(DestroyWall());
+        StartCoroutine(DestroyWall());
     }
 
     private void OnCollisionEnter(Collision other)
@@ -33,9 +33,10 @@ public class Interact : MonoBehaviour, IInteractable
         }
     }
 
-    //private IEnumerator DestroyWall()
-    //{
-    //    yield return new WaitForSeconds(3f);
-    //    Destroy(_wallPrefab);
-    //}
+    private IEnumerator DestroyWall()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(_wallPrefab);
+    }
+
 }
