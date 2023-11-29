@@ -10,6 +10,7 @@ public class SceneManagerController : MonoBehaviour
 
     private void Start()
     {
+
         if (allMenues.Length > 0)
         {
             foreach (GameObject menu in allMenues)
@@ -30,6 +31,7 @@ public class SceneManagerController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void ExitGame()
     {
 #if UNITY_EDITOR

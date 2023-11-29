@@ -41,11 +41,11 @@ public class ShieldBoost : Power
     {
         if (playerHealth != null)
         {
-            playerHealth.DisableDamage();
             _shield.SetActive(true);
+            playerHealth.DisableDamage();
             yield return new WaitForSeconds(shieldDuration);
-            playerHealth.EnableDamage();
             _shield.SetActive(false);
+            playerHealth.EnableDamage();
 
         }
         else

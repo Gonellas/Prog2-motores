@@ -7,10 +7,14 @@ public class Interact : MonoBehaviour, IInteractable
     [SerializeField] GameObject _lever;
     [SerializeField] Animator _leverAnim;
     [SerializeField] GameObject _wallPrefab;
+    private bool playerInRange = false;
 
+    [SerializeField] Transform playerTransform;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+
+        if (distance < 2.0f && Input.GetKeyDown(KeyCode.E))
         {
             OpenDoor();
         }
@@ -24,14 +28,7 @@ public class Interact : MonoBehaviour, IInteractable
         StartCoroutine(DestroyWall());
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("abrete sesamo");
-        if (other.gameObject.CompareTag("Player"))
-        {
-            OpenDoor();
-        }
-    }
+   
 
     private IEnumerator DestroyWall()
     {
