@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class LifeBoost : Power
 {
+    public PowerUpType Type => PowerUpType.LifeBoost;
     // Start is called before the first frame update
     void Start()
     {

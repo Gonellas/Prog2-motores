@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement 
+public class PlayerMovement
 {
     [Header("Components")]
     [SerializeField] private Transform _camTransform;
@@ -15,8 +15,7 @@ public class PlayerMovement
     [SerializeField] private float _groundDistance = 1.3f;
     [SerializeField] private bool _isGrounded;
 
-    Rigidbody _rb;    
-    PlayerController _controller;
+    Rigidbody _rb;
     PlayerView _view;
     Vector3 _newDir;
     Transform _transform;
@@ -38,7 +37,7 @@ public class PlayerMovement
 
     }
     public void ArtificialAwake()
-    {        
+    {
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         _rb.angularDrag = 1f;
 
@@ -64,7 +63,7 @@ public class PlayerMovement
             Rotate(camForwardFixed);
 
             if (dir.x != 0 || dir.z != 0)
-            {            
+            {
                 _newDir = (camRightFixed * dir.x + camForwardFixed * dir.z).normalized;
             }
 
@@ -76,7 +75,7 @@ public class PlayerMovement
 
     public void Jump(Vector3 dir)
     {
-        
+
         _isGrounded = Physics.CheckSphere(_transform.position, _groundDistance, _groundMask);
 
         if (_isGrounded)
@@ -101,4 +100,6 @@ public class PlayerMovement
     {
         _transform.forward = dir;
     }
+
+
 }

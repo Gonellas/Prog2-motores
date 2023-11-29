@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Power : MonoBehaviour, IInteractable
+public enum PowerUpType
 {
-
-
-    public virtual void ApplyPowerUp()
-    {
-        Debug.Log("Apply");
-    }
-
-    public virtual void Interact()
-    {
-        Debug.Log("Apply");
-
-    }
+    ShieldBoost,
+    SpeedBoost,
+    LifeBoost
+}
+public abstract class Power : MonoBehaviour
+{
+    public PowerUpType Type { get; }
+    public abstract void ApplyPowerUp();
 }

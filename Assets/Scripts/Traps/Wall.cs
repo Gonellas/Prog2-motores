@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Wall : Traps
 {
-
+    [Header("Values")]
     [SerializeField] float _maxDisZ = 5.0f;
     [SerializeField] float _minDisZ = 0.0f;
-    [SerializeField] float _timeBetweenMovements = 3f;
     [SerializeField] float _timeToOpen;
     [SerializeField] float _timeToClose;
     [SerializeField] float _moveSpeed = 50f;
@@ -49,7 +48,6 @@ public class Wall : Traps
         {
             float t = timeElapsed / moveSpeed;
             wall.position = Vector3.Lerp(startPos, endPos, t);
-            Debug.Log("Time Elapsed: " + timeElapsed);
             timeElapsed += Time.deltaTime * moveSpeed;
             yield return null;
         }

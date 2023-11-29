@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Platform : Traps
 {
-    [SerializeField] private bool _isPlayerOnPlatform = false;
-    [SerializeField] private bool _gravityActivated = false;
-    [SerializeField] private float _fallTimer = 3.0f;
-    [SerializeField] private float _shakeIntensity = 0.1f;
-    [SerializeField] private float _shakeDuration = 2.0f;
+    [Header("Values")]
+    [SerializeField] bool _gravityActivated = false;
+    [SerializeField] float _fallTimer = 3.0f;
+    [SerializeField] float _shakeIntensity = 0.1f;
+    [SerializeField] float _shakeDuration = 2.0f;
     [SerializeField] float _deathYPosition;
+
     [SerializeField] Transform _player;
 
     Vector3 _originalPosition;
@@ -34,7 +35,6 @@ public class Platform : Traps
     {
         if (other.gameObject.CompareTag("Player") && !_gravityActivated)
         {
-            _isPlayerOnPlatform = true;
             _gravityActivated = true;
 
             if (_gravityActivated)
@@ -42,14 +42,6 @@ public class Platform : Traps
                 StartCoroutine(StartShakeAfterDelay());
                 StartCoroutine(PlatformFall());
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            _isPlayerOnPlatform = false;
         }
     }
 

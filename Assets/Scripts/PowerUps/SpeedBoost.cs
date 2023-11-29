@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpeedBoost : Power
 {
+    public PowerUpType Type => PowerUpType.SpeedBoost;
+
     [SerializeField]
     float _speedBoost = 5;
 

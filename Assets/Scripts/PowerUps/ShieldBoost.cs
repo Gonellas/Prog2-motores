@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShieldBoost : Power
 {
+    //que enum es
+    public PowerUpType Type => PowerUpType.ShieldBoost;
+        
     [SerializeField]
     float shieldDuration = 5.0f;
 

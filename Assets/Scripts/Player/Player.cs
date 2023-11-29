@@ -19,23 +19,33 @@ public class Player : MonoBehaviour
     PlayerController _controller;
     PlayerMovement _movement;
     PlayerView _view;
+    Interact _interact;
+    InventoryItemData _item;
+    ItemObject _itemOb;
 
+    public InventoryItemData healthItem;
     [SerializeField] LayerMask groundMask;
     [SerializeField] Transform _camTransform;
-
-    private void Start()
-    {
-       
-    }
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
 
         _movement = new PlayerMovement(transform, _camTransform, groundMask, _rb, _newDir, _view, _speed, _gravity, _jumpForce, _groundDistance, _isGrounded);
-        _controller = new PlayerController(_movement, _dir);
+        _interact = GetComponent<Interact>();
+        _controller = new PlayerController(_movement, _interact, _dir);
 
         _movement.ArtificialAwake();
+
+        _item = healthItem;
+        if (_item == null)
+        {
+            Debug.Log("El objeto _item es nulo en Awake");
+        }
+    }
+
+    private void Start()
+    {
     }
     private void FixedUpdate()
     {
@@ -45,7 +55,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _controller.ArtificialUpdate();        
+        _controller.ArtificialUpdate();
     }
-
 }
