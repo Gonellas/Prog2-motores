@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Traps: MonoBehaviour, IDamageable
 {
-     bool _canTakeDamage = true;
+    public bool _canTakeDamage = true;
     [SerializeField] GameObject trap;
 
     public SceneManagerController sceneManagerController;
