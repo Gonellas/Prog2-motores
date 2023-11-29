@@ -10,6 +10,8 @@ public class Wall : Traps
     [SerializeField] float _timeToOpen;
     [SerializeField] float _timeToClose;
     [SerializeField] float _moveSpeed = 50f;
+    [SerializeField] bool _prototype;
+    [SerializeField] bool _level;
 
     private List<Wall> collidingWalls = new List<Wall>();
 
@@ -38,21 +40,39 @@ public class Wall : Traps
         float timeElapsed = 0f;
 
         //nivel prototipo
-        //Vector3 startPos = _initialPos + Vector3.forward * fromDistance;
-        //Vector3 endPos = _initialPos + Vector3.forward * toDistance;
-
-        Vector3 startPos = _initialPos + Vector3.right * fromDistance;
-        Vector3 endPos = _initialPos + Vector3.right * toDistance;
-
-        while(timeElapsed < moveSpeed)
+        
+        if (_prototype)
         {
-            float t = timeElapsed / moveSpeed;
-            wall.position = Vector3.Lerp(startPos, endPos, t);
-            timeElapsed += Time.deltaTime * moveSpeed;
-            yield return null;
+            Vector3 startPos = _initialPos + Vector3.forward * fromDistance;
+            Vector3 endPos = _initialPos + Vector3.forward * toDistance;
+
+            while (timeElapsed < moveSpeed)
+            {
+                float t = timeElapsed / moveSpeed;
+                wall.position = Vector3.Lerp(startPos, endPos, t);
+                timeElapsed += Time.deltaTime * moveSpeed;
+                yield return null;
+            }
+
+            wall.position = endPos;
         }
 
-        wall.position = endPos;
+        if (_level)
+        {
+            Vector3 startPos = _initialPos + Vector3.right * fromDistance;
+            Vector3 endPos = _initialPos + Vector3.right * toDistance;
+
+            while (timeElapsed < moveSpeed)
+            {
+                float t = timeElapsed / moveSpeed;
+                wall.position = Vector3.Lerp(startPos, endPos, t);
+                timeElapsed += Time.deltaTime * moveSpeed;
+                yield return null;
+            }
+
+            wall.position = endPos;
+        }
+       
     }
 
     private IEnumerator OpenCloseWall()

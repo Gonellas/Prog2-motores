@@ -8,7 +8,7 @@ public class Arrow : Traps
     [SerializeField] private bool _moveRight = true;
     [SerializeField] private bool _rotateOnX = false;
 
-   new private void Start()
+    new private void Start()
     {
         base.Start();
 
@@ -21,7 +21,6 @@ public class Arrow : Traps
     {
         float direccionZ = _moveRight ? 1.0f : -1.0f;
 
-        
         transform.Translate(Vector3.forward * _arrowSpeedZ * direccionZ * Time.deltaTime);
        
     }

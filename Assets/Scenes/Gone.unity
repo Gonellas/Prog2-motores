@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -1522,6 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -2026,6 +2028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -8998,6 +9001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -9704,6 +9708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -10372,6 +10377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -11002,7 +11008,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543018
+  m_Name: pb_Mesh170946
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11838,7 +11844,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh355572
+  m_Name: pb_Mesh-6750
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12701,6 +12707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -13205,6 +13212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -13873,6 +13881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -14782,7 +14791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &451938871
 Transform:
   m_ObjectHideFlags: 0
@@ -15330,7 +15339,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 02887ef53b832394f844ca808d2f88c1, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &476858244
 Mesh:
   m_ObjectHideFlags: 0
@@ -15887,6 +15899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -17189,7 +17202,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543708
+  m_Name: pb_Mesh171636
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17517,7 +17530,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543116
+  m_Name: pb_Mesh171044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17681,7 +17694,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543410
+  m_Name: pb_Mesh171338
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18284,6 +18297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -18788,6 +18802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -19292,6 +19307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -20532,6 +20548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -21036,6 +21053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -22048,6 +22066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -23064,6 +23083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -23910,7 +23930,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 02887ef53b832394f844ca808d2f88c1, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!1 &814149079
 GameObject:
   m_ObjectHideFlags: 0
@@ -23960,6 +23983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -25007,6 +25031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -25984,7 +26009,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 5a4bcac560f671f4689876d6eecb4c29, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!1 &925587475
 GameObject:
   m_ObjectHideFlags: 0
@@ -26618,14 +26646,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 5a4bcac560f671f4689876d6eecb4c29, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &957129996
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh355628
+  m_Name: pb_Mesh-6446
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27186,7 +27217,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 5a4bcac560f671f4689876d6eecb4c29, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &975162361
 Mesh:
   m_ObjectHideFlags: 0
@@ -29716,6 +29750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -30177,7 +30212,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543260
+  m_Name: pb_Mesh171188
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30384,6 +30419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -31194,6 +31230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -31660,7 +31697,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh542754
+  m_Name: pb_Mesh170682
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32176,7 +32213,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 5a4bcac560f671f4689876d6eecb4c29, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &1191280073
 Mesh:
   m_ObjectHideFlags: 0
@@ -33282,6 +33322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -33891,6 +33932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -34395,6 +34437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -34899,6 +34942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -36787,7 +36831,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 02887ef53b832394f844ca808d2f88c1, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &1534756204
 Mesh:
   m_ObjectHideFlags: 0
@@ -37310,7 +37357,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 5a4bcac560f671f4689876d6eecb4c29, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &1552482210
 Mesh:
   m_ObjectHideFlags: 0
@@ -38980,6 +39030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -39441,7 +39492,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543138
+  m_Name: pb_Mesh171066
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39812,6 +39863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -40824,6 +40876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -41648,7 +41701,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543088
+  m_Name: pb_Mesh171016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42199,6 +42252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -42703,6 +42757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -43551,6 +43606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -44340,7 +44396,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543726
+  m_Name: pb_Mesh171654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -44711,6 +44767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -45993,6 +46050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -46750,7 +46808,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 02887ef53b832394f844ca808d2f88c1, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!43 &2009957206
 Mesh:
   m_ObjectHideFlags: 0
@@ -47273,7 +47334,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 4802209456873014848, guid: 02887ef53b832394f844ca808d2f88c1, type: 3}
-  tiempoEntreSpawns: 2
+  _level: 0
+  _prototype: 1
+  _timeBetweenSpawns: 2
+  _lastSpawnTime: 0
 --- !u!1 &2019420092
 GameObject:
   m_ObjectHideFlags: 0
@@ -47323,6 +47387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -47789,7 +47854,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh543428
+  m_Name: pb_Mesh171356
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -48160,6 +48225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8336d3e0597bb324683df232a61407f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canTakeDamage: 1
   trap: {fileID: 0}
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -49933,13 +49999,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 957129996}
+    - target: {fileID: 2807451401875837990, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
+      propertyPath: _prototype
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2807451401875837991, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 957129996}
     - target: {fileID: 2807451401875837991, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
       propertyPath: m_VersionIndex
-      value: 6430
+      value: 6433
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
@@ -50008,7 +50078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3857829190680028525, guid: c2b87a4c2cedab84085df4fb0dcd6f29, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7
+      value: -55.4
       objectReference: {fileID: 0}
     - target: {fileID: 3857829190680028525, guid: c2b87a4c2cedab84085df4fb0dcd6f29, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50016,7 +50086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3857829190680028525, guid: c2b87a4c2cedab84085df4fb0dcd6f29, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 3857829190680028525, guid: c2b87a4c2cedab84085df4fb0dcd6f29, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50131,13 +50201,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 793723617}
     m_Modifications:
+    - target: {fileID: 4150379281643604871, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
+      propertyPath: _prototype
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4150379281643604872, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 285437330}
     - target: {fileID: 4150379281643604872, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
       propertyPath: m_VersionIndex
-      value: 6427
+      value: 6430
       objectReference: {fileID: 0}
     - target: {fileID: 4150379281643604875, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
       propertyPath: m_Mesh
