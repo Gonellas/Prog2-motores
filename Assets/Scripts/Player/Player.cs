@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Values")]
-    [SerializeField] float _speed;
+    public float _speed;
     [SerializeField] float _gravity;
     [SerializeField] float _jumpForce;
     [SerializeField] float _groundDistance;

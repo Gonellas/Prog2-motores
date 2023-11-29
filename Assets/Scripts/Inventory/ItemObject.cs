@@ -2,31 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum PowerUpType
+{
+    ShieldBoost,
+    SpeedBoost,
+    LifeBoost
+}
+
 public class ItemObject : MonoBehaviour
 {
     public InventoryItemData item;
 
+    [SerializeField] Transform playerTransform;
     private void Update()
     {
-        //InventorySystem.current.DebugPrintDictionary();
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (item == null)
-        {
-            Debug.LogError("¡El ítem en ItemObject es nulo!");
-            return;
-        }
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
 
-        if (other.CompareTag("Player") )
+        if (distance < 2.0f && Input.GetKeyDown(KeyCode.Q))
         {
-            AddToInventory();
+            AddItemToInventory();
         }
     }
-    private void AddToInventory()
+
+    private void AddItemToInventory()
     {
-        InventorySystem.current.Add(item);
-        Debug.Log("Se agregó el ítem");
-        Destroy(gameObject);
+        if (InventorySystem.current != null)
+        {
+            InventorySystem.current.Add(item);
+            Destroy(gameObject);
+            Debug.Log("Se agregó el ítem al inventario");
+        }
+        else
+        {
+            Debug.LogError("No se encontró el inventario");
+        }
     }
+
 }

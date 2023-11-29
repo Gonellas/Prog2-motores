@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-
     public delegate void OnInventoryChanged();
     public event OnInventoryChanged onInventoryChangedEvent;
 
@@ -18,7 +17,7 @@ public class InventorySystem : MonoBehaviour
         inventory = new List<InventoryItem>();
         _itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
 
-        if(current == null)
+        if (current == null)
         {
             current = this;
         }
@@ -28,10 +27,9 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-
     public InventoryItem Get(InventoryItemData referenceData)
     {
-        if(_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
+        if (_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
             return value;
         }
@@ -41,7 +39,7 @@ public class InventorySystem : MonoBehaviour
     {
         if (item == null)
         {
-            Debug.LogError("El objeto item es nulo"); 
+            Debug.LogError("El objeto item es nulo");
             return;
         }
         if (_itemDictionary.TryGetValue(item, out InventoryItem value))
@@ -62,22 +60,59 @@ public class InventorySystem : MonoBehaviour
         onInventoryChangedEvent?.Invoke();
     }
 
+    public void RemoveItemFromInventory(string itemID, string itemName)
+    {
+        InventoryItemData itemToRemove = null;
+
+        foreach (var pair in _itemDictionary)
+        {
+            InventoryItemData itemData = pair.Key;
+            if (itemData.id == itemID && itemData.displayName == itemName)
+            {
+                itemToRemove = itemData;
+                break;
+            }
+        }
+
+        if (itemToRemove != null)
+        {
+            Remove(itemToRemove);
+        }
+        else
+        {
+            Debug.Log("No se encontró el ítem en el inventario");
+        }
+    }
     public void Remove(InventoryItemData item)
     {
         if (_itemDictionary.TryGetValue(item, out InventoryItem value))
         {
             value.RemoveFromStack();
 
-            if(value.stackSize == 0)
+            if (value.stackSize == 0)
             {
                 inventory.Remove(value);
                 _itemDictionary.Remove(item);
             }
         }
 
+        Debug.Log("Se removio");
         int numberOfItems = _itemDictionary.Count;
         Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
         onInventoryChangedEvent?.Invoke();
+    }
+
+    public bool HasItemWithDetails(string itemID, string itemName)
+    {
+        foreach (var pair in _itemDictionary)
+        {
+            InventoryItemData itemData = pair.Key;
+            if (itemData.id == itemID && itemData.displayName == itemName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

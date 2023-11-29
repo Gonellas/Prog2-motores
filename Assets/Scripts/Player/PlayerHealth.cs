@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] Slider healthBar;
-    [SerializeField] float maxHealth = 100;
- 
+    public float maxHealth = 100;
+    [SerializeField] float _increaseHealth = 25f;
+
     public float currentHealth;
 
     public bool canTakeDamage = true;
@@ -19,9 +20,16 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        currentHealth = Mathf.Max(0, currentHealth);
+        if (canTakeDamage)
+        {
+            currentHealth = Mathf.Max(0, currentHealth);
+            healthBar.value = (float)currentHealth / maxHealth;
+        } 
+        else
+        {
+            canTakeDamage = false;
+        }
 
-        healthBar.value = (float)currentHealth / maxHealth;
     }
 
     public void DisableDamage()

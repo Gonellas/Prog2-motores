@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc09f2ed0d3ab446a604311f66658b7, type: 3}
   m_Name: ShieldBoost
   m_EditorClassIdentifier: 
-  key: 2
-  value: 
+  key: Shield
+  id: 2
   displayName: ShieldBoost
   icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
   prefab: {fileID: 3197264008765019832, guid: e6419ee6633444d47b05127b9351487f, type: 3}
+  itemName: ShieldBoost

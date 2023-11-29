@@ -8,40 +8,62 @@ public class SpeedBoost : Power
 
     [SerializeField]
     float _speedBoost = 5;
+    private string speedID = "3";
+    private string speedDisplayName = "SpeedBoost";
+    public GameObject speedInterface;
 
-    //Movement _movement;
+    public PlayerMovement _movement;
+    public Player _playerSpeed;
 
-    bool _playerInRange = false;
-
-    private void Update()
+    private void Start()
     {
-        if (_playerInRange && Input.GetKeyDown(KeyCode.E))
+        InventoryItemData myItemData = FindObjectOfType<InventoryItemData>();
+        if (myItemData != null)
         {
-            ApplyPowerUp();
+            speedID = myItemData.id;
+            speedDisplayName = myItemData.displayName;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player")) _playerInRange = true;
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            InventorySystem.current.RemoveItemFromInventory(speedID, speedDisplayName);
+            ApplyItemEffect();
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    public override void ApplyPower()
     {
-        if (other.CompareTag("Player")) _playerInRange = false;
+        StartCoroutine(ActivateSpeed());
     }
 
-    public override void ApplyPowerUp()
+    private IEnumerator ActivateSpeed()
     {
-        //_movement = GetComponent<Movement>();
-
-        //if (_movement != null)
-        //{
-        //    _movement.ApplySpeedBoost(_speedBoost);
-        //}
-
-        //Destroy(gameObject);
+        _playerSpeed._speed += _speedBoost;
+        speedInterface.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        _playerSpeed._speed -= _speedBoost;
+        speedInterface.SetActive(false);
     }
 
-
+    public void ApplyItemEffect()
+    {
+        if (InventorySystem.current != null)
+        {
+            if (InventorySystem.current.HasItemWithDetails(speedID, speedDisplayName))
+            {
+                ApplyPower();
+            }
+            else
+            {
+                Debug.Log("El ítem de escudo no está en el inventario");
+            }
+        }
+        else
+        {
+            Debug.Log("El inventario no está inicializado");
+        }
+    }
 }

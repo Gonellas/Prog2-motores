@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc09f2ed0d3ab446a604311f66658b7, type: 3}
   m_Name: LifeBoost
   m_EditorClassIdentifier: 
-  key: 1
-  value: 
+  key: Life
+  id: 1
   displayName: LifeBoost
   icon: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
   prefab: {fileID: 332062523945633098, guid: 8bbbcab86108ec349b7b14a3776cbe35, type: 3}
+  itemName: LifeBoost

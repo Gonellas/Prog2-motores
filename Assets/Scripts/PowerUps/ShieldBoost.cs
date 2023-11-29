@@ -4,30 +4,72 @@ using UnityEngine;
 
 public class ShieldBoost : Power
 {
-    //que enum es
     public PowerUpType Type => PowerUpType.ShieldBoost;
-        
-    [SerializeField]
-    float shieldDuration = 5.0f;
-
-    private PlayerHealth playerHealth;
+    public PlayerHealth playerHealth;
+    [SerializeField] float shieldDuration = 5.0f;
+    private string shieldID = "2";
+    private string shieldDisplayName = "ShieldBoost";
+    public GameObject _shield;
 
     private void Start()
     {
-        playerHealth = GetComponent<PlayerHealth>();
+        InventoryItemData myItemData = FindObjectOfType<InventoryItemData>();
+        if (myItemData != null)
+        {
+            shieldID = myItemData.id;
+            shieldDisplayName = myItemData.displayName;
+        }
     }
 
-    public override void ApplyPowerUp()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            InventorySystem.current.RemoveItemFromInventory(shieldID, shieldDisplayName);
+            ApplyItemEffect();
+            Debug.Log("Se aplico");
+        }
+    }
+
+    public override void ApplyPower()
     {
         StartCoroutine(ActivateShield());
+        
     }
 
     private IEnumerator ActivateShield()
     {
-        playerHealth.DisableDamage();
+        if (playerHealth != null)
+        {
+            playerHealth.DisableDamage();
+            _shield.SetActive(true);
+            yield return new WaitForSeconds(shieldDuration);
+            playerHealth.EnableDamage();
+            _shield.SetActive(false);
 
-        yield return new WaitForSeconds(shieldDuration);
+        }
+        else
+        {
+            Debug.LogError("PlayerHealth no está asignado en ShieldBoost");
+        }
+    }
 
-        playerHealth.EnableDamage(); 
+    public void ApplyItemEffect()
+    {
+        if (InventorySystem.current != null)
+        {
+            if (InventorySystem.current.HasItemWithDetails(shieldID, shieldDisplayName))
+            {
+                ApplyPower();
+            }
+            else
+            {
+                Debug.Log("El ítem de escudo no está en el inventario");
+            }
+        }
+        else
+        {
+            Debug.Log("El inventario no está inicializado");
+        }
     }
 }

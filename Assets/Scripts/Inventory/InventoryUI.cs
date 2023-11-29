@@ -35,4 +35,9 @@ public class InventoryUI : MonoBehaviour
         Slots slot = obj.GetComponent<Slots>();
         slot.Set(item);
     }
+
+    public void RemoveInventorySlot(GameObject slotObject)
+    {
+        Destroy(slotObject);
+    }
 }

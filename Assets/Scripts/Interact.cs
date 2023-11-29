@@ -12,11 +12,11 @@ public class Interact : MonoBehaviour, IInteractable
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            OpenDor();
+            OpenDoor();
         }
     }
 
-    public void OpenDor()
+    public void OpenDoor()
     {
         _leverAnim.SetBool("Open", true);
         _wallPrefab.GetComponent<Animator>().SetBool("Open", true);
@@ -29,7 +29,7 @@ public class Interact : MonoBehaviour, IInteractable
         Debug.Log("abrete sesamo");
         if (other.gameObject.CompareTag("Player"))
         {
-            OpenDor();
+            OpenDoor();
         }
     }
 

@@ -9,7 +9,7 @@ public class PlayerMovement
     [SerializeField] private LayerMask _groundMask;
 
     [Header("Values")]
-    [SerializeField] private float _movSpeed = 5f;
+    public float _movSpeed = 5f;
     [SerializeField] private float _gravity = 9.8f;
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _groundDistance = 1.3f;
@@ -101,5 +101,8 @@ public class PlayerMovement
         _transform.forward = dir;
     }
 
-
+    public void SetMovementSpeed(float speed)
+    {
+        _movSpeed = speed;
+    }
 }
