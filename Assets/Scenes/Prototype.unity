@@ -53302,6 +53302,14 @@ PrefabInstance:
       propertyPath: _prototype
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2807451401875837990, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
+      propertyPath: _timeToOpen
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807451401875837990, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
+      propertyPath: _timeToClose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2807451401875837991, guid: 1cc7fd70977919941a16c5fe39983057, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -53503,6 +53511,14 @@ PrefabInstance:
     - target: {fileID: 4150379281643604871, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
       propertyPath: _prototype
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150379281643604871, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
+      propertyPath: _timeToOpen
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150379281643604871, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
+      propertyPath: _timeToClose
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4150379281643604872, guid: 60a37129abcac564db03e9e7d1966710, type: 3}
       propertyPath: m_Mesh
