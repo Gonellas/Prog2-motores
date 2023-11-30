@@ -25,7 +25,6 @@ public class ShieldBoost : Power
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            InventorySystem.current.RemoveItemFromInventory(shieldID, shieldDisplayName);
             ApplyItemEffect();
             Debug.Log("Se aplico");
         }
@@ -33,20 +32,21 @@ public class ShieldBoost : Power
 
     public override void ApplyPower()
     {
-        StartCoroutine(ActivateShield());
-        
+        StartCoroutine(ActivateShield());        
     }
 
     private IEnumerator ActivateShield()
     {
+        Debug.Log("ActivateShield");
         if (playerHealth != null)
         {
+            Debug.Log("playerhealth");
+            playerHealth.canTakeDamage = false;
             _shield.SetActive(true);
             playerHealth.DisableDamage();
             yield return new WaitForSeconds(shieldDuration);
             _shield.SetActive(false);
             playerHealth.EnableDamage();
-
         }
         else
         {
@@ -61,6 +61,8 @@ public class ShieldBoost : Power
             if (InventorySystem.current.HasItemWithDetails(shieldID, shieldDisplayName))
             {
                 ApplyPower();
+                InventorySystem.current.RemoveItemFromInventory(shieldID, shieldDisplayName);
+
             }
             else
             {

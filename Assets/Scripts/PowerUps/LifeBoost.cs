@@ -24,46 +24,28 @@ public class LifeBoost : Power
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            InventorySystem.current.RemoveItemFromInventory(lifeID, lifeDisplayName);
             ApplyItemEffect();
             Debug.Log("sumo vida");
         }
     }
 
-    private IEnumerator LifeIncrease()
-    {
-        yield return new WaitForSeconds(2f); 
 
-        if (playerHealth != null)
+    private void LifeIncrease()
+    {
+        if (playerHealth.currentHealth < 100)
         {
-            if (playerHealth.currentHealth < 100)
-            {
-                playerHealth.currentHealth += _increaseHealth;
-                if (playerHealth.currentHealth > 100)
-                {
-                    playerHealth.currentHealth = 100;
-                }
-                playerHealth.UpdateHealthBar();
-            }
+            playerHealth.currentHealth = 100;
+            playerHealth.UpdateHealthBar();
         }
 
+        //if (playerHealth.currentHealth >= 100)
+        //{
+        //    playerHealth.currentHealth = 100;
+        //}
     }
-    //private void LifeIncrease()
-    //{
-    //    if (playerHealth.currentHealth < 100)
-    //    {
-    //        playerHealth.currentHealth = 100;
-    //        playerHealth.UpdateHealthBar();
-    //    }
-
-    //    //if (playerHealth.currentHealth >= 100)
-    //    //{
-    //    //    playerHealth.currentHealth = 100;
-    //    //}
-    //}
     public override void ApplyPower()
     {
-        StartCoroutine(LifeIncrease());
+        LifeIncrease();
     }
 
 
@@ -74,6 +56,7 @@ public class LifeBoost : Power
             if (InventorySystem.current.HasItemWithDetails(lifeID, lifeDisplayName))
             {
                 ApplyPower();
+                InventorySystem.current.RemoveItemFromInventory(lifeID, lifeDisplayName);
             }
             else
             {

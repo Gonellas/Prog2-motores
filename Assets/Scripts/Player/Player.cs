@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     PlayerController _controller;
     PlayerMovement _movement;
     PlayerView _view;
+    PlayerHealth playerHealth;
     Interact _interact;
     InventoryItemData _item;
     ItemObject _itemOb;
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour
     {
         _controller.ListenFixedKeys();
         _movement.ArtificialFixedUpdate();
+        _movement.SetMovementSpeed(_speed);
+        playerHealth.UpdateHealth(playerHealth.currentHealth);
     }
 
     private void Update()

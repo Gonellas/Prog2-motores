@@ -37,6 +37,8 @@ public class InventorySystem : MonoBehaviour
     }
     public void Add(InventoryItemData item)
     {
+        InventoryItemData itemdata = item;
+        Debug.Log(itemdata);
         if (item == null)
         {
             Debug.LogError("El objeto item es nulo");

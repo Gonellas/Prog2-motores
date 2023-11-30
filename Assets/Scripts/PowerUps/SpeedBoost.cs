@@ -29,7 +29,6 @@ public class SpeedBoost : Power
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            InventorySystem.current.RemoveItemFromInventory(speedID, speedDisplayName);
             ApplyItemEffect();
         }
     }
@@ -55,6 +54,7 @@ public class SpeedBoost : Power
             if (InventorySystem.current.HasItemWithDetails(speedID, speedDisplayName))
             {
                 ApplyPower();
+                InventorySystem.current.RemoveItemFromInventory(speedID, speedDisplayName);
             }
             else
             {

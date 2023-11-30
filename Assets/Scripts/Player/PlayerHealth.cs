@@ -41,5 +41,10 @@ public class PlayerHealth : MonoBehaviour
     {
         canTakeDamage = true;
     }
+
+    public void UpdateHealth(float newHealth)
+    {
+        currentHealth = newHealth;
+    }
 }
 
