@@ -32,7 +32,6 @@ public class Wall : Traps
         _initialPos = wall.position;
 
         StartCoroutine(OpenCloseWall());
-        
     }
 
     private IEnumerator MoveWall(float fromDistance, float toDistance, float moveSpeed)
@@ -40,7 +39,6 @@ public class Wall : Traps
         float timeElapsed = 0f;
 
         //nivel prototipo
-        
         if (_prototype)
         {
             Vector3 startPos = _initialPos + Vector3.forward * fromDistance;

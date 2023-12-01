@@ -9,7 +9,6 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private string _xAxisName = "xAxis";
     [SerializeField] private string _zAxisName = "zAxis";
     
-
     private void Start()
     {
         if(_playerAnim == null)

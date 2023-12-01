@@ -124,6 +124,6 @@ MonoBehaviour:
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
   _arrowSpeedZ: 15
-  _tag: WallRight
+  _wall: WallRight
   _moveRight: 1
   _rotateOnX: 0

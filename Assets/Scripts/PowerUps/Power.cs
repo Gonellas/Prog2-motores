@@ -5,6 +5,36 @@ using UnityEngine;
 
 public abstract class Power : MonoBehaviour
 {
-    public abstract void ApplyPower();
+    protected void Start()
+    {
+        InventoryItemData myItemData = FindObjectOfType<InventoryItemData>();
+        if (myItemData != null)
+        {
+            PowerDetails(myItemData);
+        }
+    }
 
+    protected abstract void PowerDetails(InventoryItemData itemData);
+
+    protected void ApplyItemEffect(string itemId, string itemDisplayName)
+    {
+        if (InventorySystem.current != null)
+        {
+            if (InventorySystem.current.HasItemWithDetails(itemId, itemDisplayName))
+            {
+                ApplyPower();
+                InventorySystem.current.RemoveItemFromInventory(itemId, itemDisplayName);
+            }
+            else
+            {
+                Debug.Log("El ítem no está en el inventario");
+            }
+        }
+        else
+        {
+            Debug.Log("El inventario no está inicializado");
+        }
+    }
+
+    protected abstract void ApplyPower();
 }

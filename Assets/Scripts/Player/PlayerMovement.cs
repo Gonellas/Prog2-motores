@@ -22,7 +22,6 @@ public class PlayerMovement
 
     public PlayerMovement(Transform transform, Transform camTransform, LayerMask groundMask, Rigidbody rb, Vector3 newDir, PlayerView view, float speed, float gravity, float jumpForce, float groundDistance, bool isGrounded)
     {
-
         _transform = transform;
         _camTransform = camTransform;
         _groundMask = groundMask;
@@ -51,7 +50,6 @@ public class PlayerMovement
 
     public void Movement(Vector3 dir)
     {
-
         if (dir.sqrMagnitude != 0)
         {
             Vector3 camForwardFixed = _camTransform.forward;

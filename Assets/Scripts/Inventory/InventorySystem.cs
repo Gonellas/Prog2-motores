@@ -9,6 +9,7 @@ public class InventorySystem : MonoBehaviour
 
     public Dictionary<InventoryItemData, InventoryItem> _itemDictionary;
     public List<InventoryItem> inventory { get; private set; }
+    private Dictionary<string, GameObject> _itemIcons;
 
     public static InventorySystem current;
 
@@ -16,6 +17,7 @@ public class InventorySystem : MonoBehaviour
     {
         inventory = new List<InventoryItem>();
         _itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+        _itemIcons = new Dictionary<string, GameObject>();
 
         if (current == null)
         {
@@ -39,14 +41,13 @@ public class InventorySystem : MonoBehaviour
     {
         InventoryItemData itemdata = item;
         Debug.Log(itemdata);
+
         if (item == null)
         {
-            Debug.LogError("El objeto item es nulo");
             return;
         }
         if (_itemDictionary.TryGetValue(item, out InventoryItem value))
         {
-            Debug.Log("se agrego el item");
             value.AddToStack();
         }
         else
@@ -85,6 +86,7 @@ public class InventorySystem : MonoBehaviour
             Debug.Log("No se encontró el ítem en el inventario");
         }
     }
+
     public void Remove(InventoryItemData item)
     {
         if (_itemDictionary.TryGetValue(item, out InventoryItem value))
@@ -98,7 +100,6 @@ public class InventorySystem : MonoBehaviour
             }
         }
 
-        Debug.Log("Se removio");
         int numberOfItems = _itemDictionary.Count;
         Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
         onInventoryChangedEvent?.Invoke();

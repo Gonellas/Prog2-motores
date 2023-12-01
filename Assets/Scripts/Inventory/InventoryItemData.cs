@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory Item Data")]
 public class InventoryItemData : ScriptableObject
 {
     public PowerUpType Type;
@@ -15,7 +14,5 @@ public class InventoryItemData : ScriptableObject
     public string GetDetails()
     {
         return "Nombre: " + displayName + ", ID: " + id;
-
     }
-
 }

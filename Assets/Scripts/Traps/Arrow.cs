@@ -4,7 +4,7 @@ using UnityEngine;
 public class Arrow : Traps
 {
     [SerializeField] private float _arrowSpeedZ = 2.0f; 
-    [SerializeField] private string _tag;
+    [SerializeField] private string _wall;
     [SerializeField] private bool _moveRight = true;
     [SerializeField] private bool _rotateOnX = false;
 
@@ -27,7 +27,7 @@ public class Arrow : Traps
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.CompareTag(_tag))
+        if(collision.transform.CompareTag(_wall))
         {
             Destroy(gameObject);
         }
@@ -36,8 +36,6 @@ public class Arrow : Traps
         {
             base.TakeDamage(10);
             Destroy(gameObject);
-
-            Debug.Log("Vida restante" + " " + playerHealth.currentHealth);
 
             if (playerHealth.currentHealth <= 0)
             {
