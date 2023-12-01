@@ -49,4 +49,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadMainMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
 }

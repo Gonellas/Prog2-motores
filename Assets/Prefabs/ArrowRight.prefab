@@ -362,8 +362,9 @@ MonoBehaviour:
   sceneManagerController: {fileID: 0}
   playerHealth: {fileID: 0}
   _arrowSpeedZ: 15
-  _tag: WallLeft
+  _wall: WallLeft
   _moveRight: 1
+  _rotateOnX: 0
 --- !u!54 &-7280311887429718752
 Rigidbody:
   m_ObjectHideFlags: 0
