@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] private CursorLockMode _lockMode;
-    [SerializeField] private bool _isCursorVisible;
+    [SerializeField] private bool _isCursorVisible = false;
 
     private bool isPaused = false;
 
@@ -54,5 +54,4 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
 }

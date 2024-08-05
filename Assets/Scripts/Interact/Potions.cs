@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Potions: Interact
 { 
     public InventoryItemData item;
 
-    protected override void InteractionAction()
+    public override void InteractionAction()
     {
         AddItemToInventory();
     }
@@ -16,6 +14,13 @@ public class Potions: Interact
         if (InventorySystem.current != null)
         {
             InventorySystem.current.Add(item);
+
+            if (_player != null)
+            {
+                IMessage interactMessage = _player.GetComponent<IMessage>();
+                if (interactMessage != null) interactMessage.DeactivateUI();
+            }
+
             Destroy(gameObject);
             Debug.Log("Se agregó el ítem al inventario");
         }

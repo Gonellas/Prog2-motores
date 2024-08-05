@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Trigger : MonoBehaviour
@@ -8,14 +6,26 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        IMessage messageHandler = other.GetComponent<IMessage>();
+
+        if (messageHandler != null)
         {
-            _message.SetActive(true);
+            messageHandler.ActiveUI(_message);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _message.SetActive(false);
+        IMessage messageHandler = other.GetComponent<IMessage>();
+
+        if (messageHandler != null)
+        {
+            messageHandler.DeactivateUI();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(gameObject);
     }
 }

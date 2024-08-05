@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Traps: MonoBehaviour, IDamageable
@@ -46,7 +45,6 @@ public abstract class Traps: MonoBehaviour, IDamageable
             StartCoroutine(DeathTimer());
         }
     }
-
     public virtual IEnumerator DeathTimer()
     {
         yield return new WaitForSeconds(1.5f);

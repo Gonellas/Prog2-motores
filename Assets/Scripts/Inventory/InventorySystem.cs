@@ -8,7 +8,9 @@ public class InventorySystem : MonoBehaviour
     public event OnInventoryChanged onInventoryChangedEvent;
 
     public Dictionary<InventoryItemData, InventoryItem> _itemDictionary;
+
     public List<InventoryItem> inventory { get; private set; }
+
     private Dictionary<string, GameObject> _itemIcons;
 
     public static InventorySystem current;
@@ -37,6 +39,7 @@ public class InventorySystem : MonoBehaviour
         }
         return null;
     }
+
     public void Add(InventoryItemData item)
     {
         InventoryItemData itemdata = item;
@@ -46,6 +49,7 @@ public class InventorySystem : MonoBehaviour
         {
             return;
         }
+
         if (_itemDictionary.TryGetValue(item, out InventoryItem value))
         {
             value.AddToStack();
@@ -60,6 +64,7 @@ public class InventorySystem : MonoBehaviour
 
         int numberOfItems = _itemDictionary.Count;
         Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
+
         onInventoryChangedEvent?.Invoke();
     }
 

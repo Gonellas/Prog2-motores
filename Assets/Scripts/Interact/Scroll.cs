@@ -6,11 +6,7 @@ public class Scroll : Interact
     [SerializeField] GameObject _scrollMessage;
     [SerializeField] bool _scrollActive = false;
 
-    new private void Start()
-    {
-        base.Start();
-    }
-    protected override void InteractionAction()
+    public override void InteractionAction()
     {
         if (!_scrollActive)
         {
@@ -21,20 +17,24 @@ public class Scroll : Interact
             DeactivateScroll();
         }
     }
-    
 
-    private void ActiveScroll()
+    public void ActiveScroll()
     {
         _scrollActive = true;
-        _scrollMessage.SetActive(true);
+        if (_scrollMessage != null)  
+        {
+            _scrollMessage.SetActive(true);
+        }
     }
 
-    private void DeactivateScroll()
+    public void DeactivateScroll()
     {
         _scrollActive = false;
-        _scrollMessage.SetActive(false);
+        if (_scrollMessage != null)  
+        {
+            _scrollMessage.SetActive(false);
+        }
     }
-
 }
 
 

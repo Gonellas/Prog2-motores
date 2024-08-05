@@ -9,32 +9,28 @@ public class Lever : Interact
     [SerializeField] AudioSource _audioLever;
     [SerializeField] AudioSource _audioWall;
 
-    new private void Start()
+    private void Start()
     {
-        base.Start();
-
 
         _audioWall = _wallPrefab.GetComponent<AudioSource>();
     }
 
-    protected override void InteractionAction()
+    public override void InteractionAction()
     {
         OpenDoor();
     }
 
     private void OpenDoor()
     {
-        float distance = Vector3.Distance(_player.transform.position, transform.position);
+        _leverAnim.SetBool("Open", true);
+        _wallPrefab.GetComponent<Animator>().SetBool("Open", true);
+        _audioLever.Play();
+        _audioWall.Play();
 
-        if (distance < 2.0f && Input.GetKey(KeyCode.E))
-        {
-            _leverAnim.SetBool("Open", true);
-            _wallPrefab.GetComponent<Animator>().SetBool("Open", true);
-            _audioLever.Play();
-            _audioWall.Play();
+        IMessage interactMessage = _player.GetComponent<IMessage>();
+        if (interactMessage != null) interactMessage.DeactivateUI();
 
-            StartCoroutine(DestroyWall());
-        }  
+        StartCoroutine(DestroyWall());
     }
 
     private IEnumerator DestroyWall()
