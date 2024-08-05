@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IMessage
     [SerializeField] Transform _camTransform;
 
     [SerializeField] GameObject _interactionMessage;
-    [SerializeField] GameObject scrollMessage;
+    [SerializeField] GameObject _scrollMesage;
     Interact interact;
 
     private void Awake()
