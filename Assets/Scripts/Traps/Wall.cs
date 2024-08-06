@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TP Final Camila Gonella
+
 public class Wall : Traps
 {
     [Header("Values")]

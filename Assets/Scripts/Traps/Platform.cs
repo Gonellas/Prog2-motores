@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TP Final Emi Cassarino
+
 public class Platform : Traps
 {
     [Header("Values")]

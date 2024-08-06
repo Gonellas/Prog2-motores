@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+//TPFinal Camila Gonella - Emi Cassarino
+
 public abstract class Traps: MonoBehaviour, IDamageable
 {
     public bool _canTakeDamage = true;

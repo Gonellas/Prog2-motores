@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
+//TPFinal Emi Cassarino - Camila Gonella
 public abstract class Power : MonoBehaviour
 {
     protected void Start()

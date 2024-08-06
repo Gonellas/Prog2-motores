@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//TP Final Camila Gonella
 public class LifeBoost : Power
 {
     public PowerUpType Type => PowerUpType.LifeBoost;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TPFinal Camila Gonella
 public class Spikes : Traps
 {
     [SerializeField] float _maxHeight = 3.38f; 

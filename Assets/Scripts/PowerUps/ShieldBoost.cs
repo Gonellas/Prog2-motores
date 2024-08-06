@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+//TPFinal Emi Cassarino - Camila Gonella
+
 public class ShieldBoost : Power
 {
-    public PowerUpType Type => PowerUpType.ShieldBoost;
     public PlayerHealth playerHealth;
     [SerializeField] private float _shieldDuration = 5.0f;
     private string _shieldID = "2";

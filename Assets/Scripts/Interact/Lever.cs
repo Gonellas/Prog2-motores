@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+//TPFinal Emi Cassarino
 public class Lever : Interact
 { 
     [SerializeField] GameObject _lever;

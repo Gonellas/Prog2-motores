@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+//TPFinal Camila Gonella del Carril
 
 public class PlayerHealth : MonoBehaviour
 {

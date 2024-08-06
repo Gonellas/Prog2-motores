@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//TPFinal Camila Gonella del Carril
+
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour, IMessage

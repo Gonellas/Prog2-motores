@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+//TPFinal Camila Gonella del Carril
 
 public class PlayerController
 {

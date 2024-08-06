@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
+//TPFinal Emi Cassarino
 public class Scroll : Interact
 {
     [SerializeField] GameObject _scrollMessage;

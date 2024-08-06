@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+//TPFinal Emi Cassarino
 
 public abstract class Interact : MonoBehaviour
 {
