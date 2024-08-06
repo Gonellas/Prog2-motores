@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,18 +16,20 @@ public class InventorySystem : MonoBehaviour
 
     private void Awake()
     {
-        inventory = new List<InventoryItem>();
-        _itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
-        _itemIcons = new Dictionary<string, GameObject>();
-
         if (current == null)
         {
             current = this;
+            DontDestroyOnLoad(gameObject);  
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        inventory = new List<InventoryItem>();
+        _itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+        _itemIcons = new Dictionary<string, GameObject>();
     }
 
     public InventoryItem Get(InventoryItemData referenceData)
@@ -42,11 +43,9 @@ public class InventorySystem : MonoBehaviour
 
     public void Add(InventoryItemData item)
     {
-        InventoryItemData itemdata = item;
-        Debug.Log(itemdata);
-
         if (item == null)
         {
+            Debug.LogError("Item data is null");
             return;
         }
 
@@ -56,14 +55,14 @@ public class InventorySystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Agregando nuevo item al diccionario");
+            Debug.Log("Adding new item to dictionary");
             InventoryItem newItem = new InventoryItem(item);
             inventory.Add(newItem);
             _itemDictionary.Add(item, newItem);
         }
 
         int numberOfItems = _itemDictionary.Count;
-        Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
+        Debug.Log("Number of items in dictionary: " + numberOfItems);
 
         onInventoryChangedEvent?.Invoke();
     }
@@ -88,7 +87,7 @@ public class InventorySystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("No se encontró el ítem en el inventario");
+            Debug.Log("Item not found in inventory");
         }
     }
 
@@ -106,7 +105,7 @@ public class InventorySystem : MonoBehaviour
         }
 
         int numberOfItems = _itemDictionary.Count;
-        Debug.Log("Número de elementos en el diccionario: " + numberOfItems);
+        Debug.Log("Number of items in dictionary: " + numberOfItems);
         onInventoryChangedEvent?.Invoke();
     }
 
@@ -122,5 +121,4 @@ public class InventorySystem : MonoBehaviour
         }
         return false;
     }
-
 }

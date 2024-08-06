@@ -1,12 +1,17 @@
 using UnityEngine;
 
-public class Potions: Interact
-{ 
+public class Potions : Interact
+{
     public InventoryItemData item;
+    private bool _isPickedUp = false; 
 
     public override void InteractionAction()
     {
-        AddItemToInventory();
+        if (!_isPickedUp)
+        {
+            _isPickedUp = true;
+            AddItemToInventory();
+        }
     }
 
     private void AddItemToInventory()
@@ -21,6 +26,7 @@ public class Potions: Interact
                 if (interactMessage != null) interactMessage.DeactivateUI();
             }
 
+            gameObject.SetActive(false);
             Destroy(gameObject);
             Debug.Log("Se agregó el ítem al inventario");
         }
@@ -30,5 +36,4 @@ public class Potions: Interact
         }
     }
 }
-
 

@@ -50,9 +50,10 @@ public class Player : MonoBehaviour, IMessage
     {
         _controller.ArtificialUpdate();
 
-        if(Input.GetKeyDown(KeyCode.E) && interact != null)
+        if (Input.GetKeyDown(KeyCode.E) && interact != null)
         {
             interact.InteractionAction();
+            interact = null; 
         }
     }
 

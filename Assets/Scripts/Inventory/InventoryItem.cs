@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryItem : MonoBehaviour
+public class InventoryItem
 {
     public InventoryItemData data { get; private set; }
     public int stackSize { get; private set; }
@@ -11,9 +11,9 @@ public class InventoryItem : MonoBehaviour
 
     public InventoryItem(InventoryItemData itemData)
     {
-        Debug.Log("se agrego" + data + stackSize);
         data = itemData;
-        AddToStack();
+        stackSize = 1;  
+        Debug.Log("Se agregó " + data + ", stack size: " + stackSize);
     }
 
     public void AddToStack()
