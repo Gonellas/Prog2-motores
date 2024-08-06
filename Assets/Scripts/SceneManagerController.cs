@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +8,6 @@ public class SceneManagerController : MonoBehaviour
 
     private void Start()
     {
-
         if (allMenues.Length > 0)
         {
             foreach (GameObject menu in allMenues)
@@ -20,6 +17,8 @@ public class SceneManagerController : MonoBehaviour
         }
 
         if (wantedActiveMenu != null) wantedActiveMenu.SetActive(true);
+
+        SetCursorState(true);
     }
 
     public void ChangeScene(string name)
@@ -40,4 +39,11 @@ public class SceneManagerController : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    public void SetCursorState(bool isVisible)
+    {
+        Cursor.visible = isVisible;
+        Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
+    }
 }
+

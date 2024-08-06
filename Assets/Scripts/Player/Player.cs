@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IMessage
     [SerializeField] Transform _camTransform;
 
     [SerializeField] GameObject _interactionMessage;
-    [SerializeField] GameObject _scrollMesage;
+    [SerializeField] GameObject _scrollMessage; 
     Interact interact;
 
     private void Awake()
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour, IMessage
         if (Input.GetKeyDown(KeyCode.E) && interact != null)
         {
             interact.InteractionAction();
-            interact = null; 
+            interact = null;
         }
     }
 
@@ -64,9 +64,14 @@ public class Player : MonoBehaviour, IMessage
         {
             if (messageType.messageType == MessageType.MessageTypeEnum.Scroll)
             {
-                Scroll scroll = message.GetComponent<Scroll>();
-                if (scroll != null) scroll.ActiveScroll();
+                if (_scrollMessage != null)
+                {
+                    _scrollMessage.GetComponent<Scroll>()?.DeactivateScroll();
+                }
 
+                _scrollMessage = message;
+                Scroll scroll = _scrollMessage.GetComponent<Scroll>();
+                if (scroll != null) scroll.ActiveScroll();
             }
             else if (messageType.messageType == MessageType.MessageTypeEnum.Interact)
             {
@@ -88,25 +93,21 @@ public class Player : MonoBehaviour, IMessage
             MessageType messageType = _interactionMessage.GetComponent<MessageType>();
             if (messageType != null)
             {
-                Debug.Log("MessageType detected: " + messageType.messageType);
                 if (messageType.messageType == MessageType.MessageTypeEnum.Scroll)
                 {
                     Scroll scroll = _interactionMessage.GetComponent<Scroll>();
                     if (scroll != null)
                     {
-                        Debug.Log("Deactivating Scroll");
                         scroll.DeactivateScroll();
                     }
                 }
                 else if (messageType.messageType == MessageType.MessageTypeEnum.Interact)
                 {
-                    Debug.Log("Deactivating Interact Message");
                     _interactionMessage.SetActive(false);
                 }
             }
         }
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -115,7 +116,6 @@ public class Player : MonoBehaviour, IMessage
         {
             interact = interactable;
             ActiveUI(other.gameObject);
-            Debug.Log("Toy cerca de un interact");
         }
     }
 
@@ -124,9 +124,12 @@ public class Player : MonoBehaviour, IMessage
         Interact interactable = other.GetComponent<Interact>();
         if (interactable != null)
         {
+            if (interactable is Scroll scroll)
+            {
+                scroll.DeactivateScroll();
+            }
             interact = null;
             DeactivateUI();
         }
     }
-
 }

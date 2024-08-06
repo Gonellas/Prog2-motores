@@ -11,6 +11,7 @@ public class Victory : MonoBehaviour
             if (sceneManagerController != null)
             {
                 sceneManagerController.ChangeScene("Victory");
+                sceneManagerController.SetCursorState(true);
             }
         }
     }

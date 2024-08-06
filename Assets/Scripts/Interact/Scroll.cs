@@ -12,16 +12,12 @@ public class Scroll : Interact
         {
             ActiveScroll();
         }
-        else
-        {
-            DeactivateScroll();
-        }
     }
 
     public void ActiveScroll()
     {
         _scrollActive = true;
-        if (_scrollMessage != null)  
+        if (_scrollMessage != null)
         {
             _scrollMessage.SetActive(true);
         }
@@ -30,11 +26,17 @@ public class Scroll : Interact
     public void DeactivateScroll()
     {
         _scrollActive = false;
-        if (_scrollMessage != null)  
+        if (_scrollMessage != null)
         {
             _scrollMessage.SetActive(false);
         }
     }
+
+    private void OnDestroy()
+    {
+        DeactivateScroll();
+    }
 }
+
 
 
