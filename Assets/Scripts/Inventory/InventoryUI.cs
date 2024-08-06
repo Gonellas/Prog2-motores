@@ -40,4 +40,12 @@ public class InventoryUI : MonoBehaviour
     {
         Destroy(slotObject);
     }
+
+    private void OnDestroy()
+    {
+        if (InventorySystem.current != null)
+        {
+            InventorySystem.current.onInventoryChangedEvent -= OnUpdateInventory;
+        }
+    }
 }

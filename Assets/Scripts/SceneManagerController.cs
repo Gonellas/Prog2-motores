@@ -28,6 +28,11 @@ public class SceneManagerController : MonoBehaviour
 
     public void RestartLevel()
     {
+        if (InventorySystem.current != null)
+        {
+            InventorySystem.current.ResetInventory();
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

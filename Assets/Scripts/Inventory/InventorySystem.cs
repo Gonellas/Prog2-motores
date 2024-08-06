@@ -7,9 +7,7 @@ public class InventorySystem : MonoBehaviour
     public event OnInventoryChanged onInventoryChangedEvent;
 
     public Dictionary<InventoryItemData, InventoryItem> _itemDictionary;
-
     public List<InventoryItem> inventory { get; private set; }
-
     private Dictionary<string, GameObject> _itemIcons;
 
     public static InventorySystem current;
@@ -19,7 +17,7 @@ public class InventorySystem : MonoBehaviour
         if (current == null)
         {
             current = this;
-            DontDestroyOnLoad(gameObject);  
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -30,6 +28,15 @@ public class InventorySystem : MonoBehaviour
         inventory = new List<InventoryItem>();
         _itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
         _itemIcons = new Dictionary<string, GameObject>();
+    }
+
+    public void ResetInventory()
+    {
+        Debug.Log("Resetting inventory...");
+        inventory.Clear();
+        _itemDictionary.Clear();
+        onInventoryChangedEvent?.Invoke();
+        Debug.Log("Inventory reset completed. Item count: " + inventory.Count);
     }
 
     public InventoryItem Get(InventoryItemData referenceData)
